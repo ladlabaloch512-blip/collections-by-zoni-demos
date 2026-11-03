@@ -384,9 +384,43 @@ a.drop-item{box-sizing:border-box}
 @media(max-width:900px){.feat-mosaic{grid-template-columns:repeat(2,1fr)}.feat-mosaic .card.span2{grid-column:span 2;grid-row:auto}.feat-mosaic .card.span2 .card-img img{height:300px;min-height:0}.slider .hero-shade{min-height:460px}.cat-img{flex-basis:130px}}
 @media(max-width:560px){.slider-on .sl-arrow{width:38px;height:38px}.slider-on .sl-arrow.prev{left:10px}.slider-on .sl-arrow.next{right:10px}.cat-name{font-size:18px}.cat-arrow{padding:0 12px}}
 
+/* ===== Round 5: announcement bar / marquee / shop-by-price / product badges ===== */
+/* Announcement bar: sits ABOVE the sticky header and scrolls away with the page */
+.abar{height:38px;background:#111;color:#FFC531;display:flex;align-items:center;justify-content:center;padding:0 12px;box-sizing:border-box;border-bottom:3px solid #FFC531}
+.abar-msg{font-family:'Archivo',sans-serif;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;transition:opacity .26s ease}
+.abar-msg.swap{opacity:0}
+/* Marquee strip. Deliberately NO hover-pause rule (a stuck :hover on touch
+   would freeze the band) and NO reduced-motion gate — it always runs. */
+.marquee{background:#FFC531;color:#111;overflow:hidden;padding:11px 0;border-top:3px solid #111;border-bottom:3px solid #111}
+.mq-track{display:flex;width:max-content;animation:mqScroll 26s linear infinite}
+.mq-group{display:flex;align-items:center;gap:30px;padding-right:30px;flex:none}
+.mq-item{font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.mq-sep{fill:#111;flex:none}
+@keyframes mqScroll{to{transform:translateX(-50%)}}
+/* Shop by Price tiles */
+.price-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding-bottom:16px}
+.price-tile{background:#fff;border:3px solid #111;box-shadow:6px 6px 0 #111;padding:22px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:3px;transition:transform .15s ease,box-shadow .15s ease}
+.price-tile:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #FFC531}
+.pt-label{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;text-transform:uppercase;letter-spacing:-.5px;color:#111}
+.pt-count{color:#555;font-weight:700;font-size:14px}
+/* Shop page: active price filter chip */
+.active-filters{margin:2px 0 14px}
+.price-chip{display:inline-flex;align-items:center;gap:9px;background:#FFC531;border:2.5px solid #111;color:#111;font-weight:800;font-size:13.5px;text-transform:uppercase;letter-spacing:.4px;padding:6px 8px 6px 14px}
+.price-chip-x{width:24px;height:24px;border-radius:0;border:0;background:#111;color:#FFC531;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+/* Product badges (merchandising flags, one per product) */
+.pbadge{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.4px;padding:5px 10px;text-transform:uppercase}
+.card-img .pbadge{position:absolute;top:0;left:0;z-index:2;border-right:2.5px solid #111;border-bottom:2.5px solid #111}
+.pd-img{position:relative}
+.pd-img .pbadge{position:absolute;top:14px;left:14px;z-index:2;border:2.5px solid #111}
+.pbadge.b-new{background:#FFC531;color:#111}
+.pbadge.b-best{background:#111;color:#FFC531}
+.pbadge.b-trend{background:#fff;color:#111}
+.pbadge.b-flash{background:#111;color:#fff}
+
 </style>
 </head>
 <body data-page="home">
+<div class="abar"><span class="abar-msg" id="abarMsg">Free delivery on orders above Rs 3,000</span></div>
 <header class="site-head"><div class="wrap head-in">
 <a class="brand" href="design-3.html" aria-label="Collection's by Zoni — home"><img class="head-logo" src="https://collections-by-zoni.surge.sh/products/logo.jpg" alt="Collection's by Zoni logo" width="44" height="44"><span class="wordmark">Collection's by <span>Zoni</span><small>Little style, big smile</small></span></a>
 <nav class="main-nav" aria-label="Main navigation">
@@ -427,6 +461,7 @@ a.drop-item{box-sizing:border-box}
 <h1>Warm layers for <span class="accent">chilly days</span></h1>
 <p class="hero-sub">Snug winter sets with soft collars and cosy fits — warm hugs for cold mornings.</p>
 <div class="hero-ctas"><a class="btn primary big" href="shop-3.html?cat=Winter%20Sets">Shop Winter Sets</a><a class="btn ghost big" href="shop-3.html">Shop All</a></div></div></div></div></div></div><button class="sl-arrow prev" data-action="sl-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button><button class="sl-arrow next" data-action="sl-next" aria-label="Next slide"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button><div class="sl-dots"><button class="sl-dot" data-action="sl-dot" data-i="0" aria-label="Go to slide 1"></button><button class="sl-dot" data-action="sl-dot" data-i="1" aria-label="Go to slide 2"></button><button class="sl-dot" data-action="sl-dot" data-i="2" aria-label="Go to slide 3"></button></div></header>
+<div class="marquee" data-sec="marquee" aria-label="Store highlights"><div class="mq-track"><div class="mq-group"><span class="mq-item">Track Suits</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Denim Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Shirts &amp; Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Sweatshirt Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Winter Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Sizes 1–14 Years</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Cash on Delivery</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg></div><div class="mq-group" aria-hidden="true"><span class="mq-item">Track Suits</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Denim Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Shirts &amp; Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Sweatshirt Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Winter Sets</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Sizes 1–14 Years</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span class="mq-item">Cash on Delivery</span><svg class="mq-sep" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg></div></div></div>
 <section class="section feat-sec" data-sec="featured"><div class="wrap">
 <div class="sec-head rv"><h2>Featured Products</h2><p>Hand-picked favourites from our Facebook collection — two from every category.</p></div>
 <div class="feat-mosaic" id="featGrid"></div>
@@ -435,6 +470,10 @@ a.drop-item{box-sizing:border-box}
 <section class="section age-blocks" data-sec="age"><div class="wrap">
 <div class="sec-head rv"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
 <div class="age-row rv" id="ageTiles"></div>
+</div></section>
+<section class="section price-sec" data-sec="price"><div class="wrap">
+<div class="sec-head rv"><h2>Shop by Price</h2><p>Shopping on a budget? Start with a price band — every style inside it, one tap away.</p></div>
+<div class="price-row"><a class="price-tile rv" href="shop-3.html?price=2000"><span class="pt-label">Under Rs 2,000</span><span class="pt-count">3 Products</span></a><a class="price-tile rv" href="shop-3.html?price=2200"><span class="pt-label">Under Rs 2,200</span><span class="pt-count">6 Products</span></a><a class="price-tile rv" href="shop-3.html?price=2500"><span class="pt-label">Under Rs 2,500</span><span class="pt-count">18 Products</span></a><a class="price-tile rv" href="shop-3.html?price=3000"><span class="pt-label">Under Rs 3,000</span><span class="pt-count">24 Products</span></a></div>
 </div></section>
 <section class="section cats-sec" data-sec="cats"><div class="wrap">
 <div class="sec-head rv"><h2>Shop by Category</h2><p>Five little collections — tap one to see everything inside it.</p></div>
@@ -541,7 +580,7 @@ const P_HOME = "design-" + DESIGN + ".html", P_SHOP = "shop-" + DESIGN + ".html"
 const CART_KEY = "zoni_cart_" + DESIGN, ORDER_KEY = "zoni_last_order_" + DESIGN;
 const SHOP_CATS = CATEGORIES.filter(c => c !== "All");
 const FALLBACK = {name:"",city:"Karachi",payment:"Cash on Delivery",date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),items:1,total:2199};
-const state = { cart: storeGet(CART_KEY) || [], lastOrder: storeGet(ORDER_KEY) || null, age:"all", cat:"All", q:"", current:null, size:null, qty:1 };
+const state = { cart: storeGet(CART_KEY) || [], lastOrder: storeGet(ORDER_KEY) || null, age:"all", cat:"All", q:"", price:null, current:null, size:null, qty:1 };
 
 const cartCountTotal = () => state.cart.reduce((a, l) => a + l.qty, 0);
 const cartSubtotal = () => state.cart.reduce((a, l) => a + l.price * l.qty, 0);
@@ -612,6 +651,21 @@ function addWithFly(img, id, size, qty){
   flyToCart(img, () => { renderBadge(); popBadge(); toast("Added to cart: " + byId(id).title + " (" + size + ")"); });
 }
 
+/* ---------- announcement bar (all pages; rotating messages, NO RM gating) ---------- */
+const ABAR_MSGS = [
+  "Free delivery on orders above Rs 3,000",
+  "Cash on Delivery available across Pakistan",
+  "7-day easy exchange"
+];
+function initAnnounce(){
+  const el = $("#abarMsg"); if (!el) return;
+  let i = 0;
+  setInterval(() => {
+    el.classList.add("swap");
+    setTimeout(() => { i = (i + 1) % ABAR_MSGS.length; el.textContent = ABAR_MSGS[i]; el.classList.remove("swap"); }, 260);
+  }, 4000);
+}
+
 /* ---------- header / drawer / footer ---------- */
 /* Shop dropdown: click pins it open/closed; on hover-capable devices only
    (hover:hover + pointer:fine, checked via matchMedia) plain hovering the
@@ -676,11 +730,19 @@ function renderFootCats(){
 
 /* ---------- product grids (home + shop) ---------- */
 const BAND_COLORS = ["#FF6B5E","#FFB800","#34D399","#38BDF8","#B79CED","#F4A7B9"];
+/* Merchandising badges (Giggles-style flags): exactly ONE per product,
+   assigned deterministically by rotation over catalog order. Demo
+   placeholders like the sample prices — Phase 2 turns them into admin
+   flags; the colour mapping lives in each theme's CSS (.b-new etc.). */
+const BADGES = ["New Arrival", "Best Seller", "Trending", "Flash Deal"];
+const BADGE_CLS = ["b-new", "b-best", "b-trend", "b-flash"];
+function badgeHTML(p){ const i = (p.id - 1) % BADGES.length; return '<span class="pbadge ' + BADGE_CLS[i] + '">' + BADGES[i] + "</span>"; }
 function filtered(){
   const q = state.q.trim().toLowerCase();
   return PRODUCTS.filter(p =>
     (state.cat === "All" || p.category === state.cat) &&
     (state.age === "all" || p.ages.indexOf(state.age) >= 0) &&
+    (state.price == null || p.salePrice <= state.price) &&
     (!q || p.title.toLowerCase().indexOf(q) >= 0 || p.category.toLowerCase().indexOf(q) >= 0));
 }
 function cardHTML(p, withRv, extra){
@@ -688,7 +750,7 @@ function cardHTML(p, withRv, extra){
   const band = CATBAND[p.category] || BAND_COLORS[(p.id - 1) % BAND_COLORS.length];
   return '<article class="card' + (withRv ? " rv" : "") + (extra || "") + '" data-action="open" data-id="' + p.id + '">' +
     (DESIGN === 4 ? '<div class="card-band" style="background:' + band + '"></div>' : "") +
-    '<a class="card-imglink" href="' + P_PROD + "?id=" + p.id + '"><span class="card-img"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '" loading="lazy">' + (off ? '<span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</span></a>" +
+    '<a class="card-imglink" href="' + P_PROD + "?id=" + p.id + '"><span class="card-img"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '" loading="lazy">' + badgeHTML(p) + (off ? '<span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</span></a>" +
     '<div class="card-body"><span class="card-cat">' + esc(p.category) + "</span>" +
     '<a class="card-titlelink" href="' + P_PROD + "?id=" + p.id + '"><h3 class="card-title">' + esc(p.title) + "</h3></a>" +
     '<span class="card-rating">' + starRow(p.rating) + '<span class="rc">' + p.rating.toFixed(1) + " (" + p.reviewCount + ")</span></span>" +
@@ -711,15 +773,24 @@ function renderChips(){
   const box = $("#catChips"); if (!box) return;
   box.innerHTML = CATEGORIES.map(c => '<button class="chip' + (state.cat === c ? " active" : "") + '" data-action="cat" data-cat="' + esc(c) + '">' + esc(c) + "</button>").join("");
 }
+function renderPriceChip(){
+  const row = $("#priceChipRow"); if (!row) return;
+  if (state.price == null){ row.hidden = true; row.innerHTML = ""; return; }
+  row.hidden = false;
+  row.innerHTML = '<span class="price-chip"><span class="price-chip-label">Under Rs ' + Number(state.price).toLocaleString("en-PK") + '</span>' +
+    '<button class="price-chip-x" data-action="price-clear" aria-label="Remove price filter">&times;</button></span>';
+}
 function initShopSection(){
   if (PAGE === "shop"){
     const qs = new URLSearchParams(location.search);
     if (qs.get("cat") && SHOP_CATS.indexOf(qs.get("cat")) >= 0) state.cat = qs.get("cat");
     if (qs.get("age") && AGES.indexOf(qs.get("age")) >= 0) state.age = qs.get("age");
     if (qs.get("q")) state.q = qs.get("q");
+    const pv = Number(qs.get("price"));
+    if (qs.get("price") && isFinite(pv) && pv > 0) state.price = pv;
   }
   const si = $("#searchInput"); if (si && state.q) si.value = state.q;
-  renderAgeTiles(); renderChips(); renderGrid(true);
+  renderAgeTiles(); renderChips(); renderPriceChip(); renderGrid(true);
   if (location.hash === "#searchInput" && si) setTimeout(() => { try { si.focus({ preventScroll:true }); } catch (e) { si.focus(); } }, 60);
 }
 /* ---------- home: featured products (first 2 of each category, catalog order) ---------- */
@@ -791,7 +862,7 @@ function renderProduct(p){
   state.current = p; state.size = defaultSize(p); state.qty = 1;
   const off = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice / p.regularPrice) * 100) : 0;
   $("#productDetail").innerHTML =
-    '<div class="pd-img"><img id="pdImg" src="' + p.featuredImage + '" alt="' + esc(p.title) + '"></div>' +
+    '<div class="pd-img"><img id="pdImg" src="' + p.featuredImage + '" alt="' + esc(p.title) + '">' + badgeHTML(p) + "</div>" +
     '<div class="pd-info"><span class="card-cat">' + esc(p.category) + '</span><h1 class="pd-title">' + esc(p.title) + "</h1>" +
     '<span class="card-rating">' + starRow(p.rating) + '<span class="rc">' + p.rating.toFixed(1) + " &middot; " + p.reviewCount + " reviews</span></span>" +
     '<div class="pd-price">' + money(p.salePrice) + (off ? '<span class="was">' + money(p.regularPrice) + '</span><span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</div>" +
@@ -995,6 +1066,7 @@ function bindGlobal(){
       if (PAGE === "shop"){ const s = $("#shop"); if (s) s.scrollIntoView({ behavior:"smooth", block:"start" }); }
     }
     else if (a === "cat"){ state.cat = el.dataset.cat; renderChips(); renderGrid(false); }
+    else if (a === "price-clear"){ state.price = null; renderPriceChip(); renderGrid(false); }
     else if (a === "add"){
       e.preventDefault(); e.stopPropagation();
       const card = el.closest(".card");
@@ -1046,6 +1118,7 @@ function bindGlobal(){
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   bindGlobal();
+  initAnnounce();
   renderBadge(); renderFootCats();
   if (PAGE === "shop") initShopSection();
   if (PAGE === "home"){ renderAgeTiles(); renderFeatured(); renderCatShowcase(); renderTestimonials(); initSlider(); }
