@@ -272,105 +272,148 @@ body{padding-bottom:64px}}
 
 .shop-search{box-sizing:border-box}
 
+/* ===== Multi-page + Noor Threads animation package ===== */
+main{animation:pageIn .35s ease backwards}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(36px)}
+.rv.in{opacity:1;transform:translateY(0);transition:opacity .55s ease var(--d,0ms),transform .8s cubic-bezier(.34,1.56,.64,1) var(--d,0ms)}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+.kb{animation:kenburns 8s ease-in-out infinite alternate}
+a.btn{display:inline-block;text-align:center;text-decoration:none}
+@media(max-width:900px){a.cta-btn{display:none}}
+a.place-btn{display:block}
+.back-btn{display:inline-block;text-decoration:none}
+.card-imglink{display:block;text-decoration:none}
+.card-img{display:block}
+.card-titlelink{color:inherit;text-decoration:none;display:block}
+.main-nav a,.d-link,.drop-item{text-decoration:none}
+.badge.pop{animation:badgePop .45s ease}
+@keyframes badgePop{35%{transform:scale(1.34)}}
+.fly-clone{position:fixed;z-index:200;object-fit:cover;pointer-events:none;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.drop-menu{display:block;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease,visibility .25s;pointer-events:none}
+.drop-menu.open{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+a.drop-item{box-sizing:border-box}
+.drop-menu .drop-item{opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
+.drop-menu.open .drop-item{opacity:1;transform:none}
+.drop-menu.open .drop-item:nth-child(1){transition-delay:.03s}
+.drop-menu.open .drop-item:nth-child(2){transition-delay:.06s}
+.drop-menu.open .drop-item:nth-child(3){transition-delay:.09s}
+.drop-menu.open .drop-item:nth-child(4){transition-delay:.12s}
+.drop-menu.open .drop-item:nth-child(5){transition-delay:.15s}
+.drop-menu.open .drop-item:nth-child(6){transition-delay:.18s}
+#drawerBackdrop{position:fixed;inset:0;background:rgba(18,18,28,.45);opacity:0;visibility:hidden;transition:opacity .38s ease,visibility .38s;z-index:75}
+#drawerBackdrop.show{opacity:1;visibility:visible}
+#drawer{position:fixed;top:0;left:0;height:100dvh;width:min(320px,86vw);background:#fff;z-index:85;transform:translateX(-106%);transition:transform .38s cubic-bezier(.32,.72,.28,1);display:flex;flex-direction:column;box-shadow:16px 0 38px rgba(2,132,199,.20)}
+#drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:2px solid #BAE6FD}
+.drawer-brand{display:flex;align-items:center;gap:10px}
+.drawer-brand .head-logo{width:38px;height:38px}
+.drawer-brand b{font-size:16.5px;color:#173A4A}
+.drawer-nav{padding:12px 14px;display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+#drawer .d-link{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box;background:transparent;border:0;font-family:inherit;font-weight:800;font-size:15.5px;color:#173A4A;padding:11px 10px;border-radius:12px;text-align:left;cursor:pointer;opacity:0;transform:translateX(-16px);transition:opacity .3s ease,transform .38s cubic-bezier(.32,.72,.28,1)}
+#drawer.open .d-link{opacity:1;transform:none;transition-delay:var(--dl,0ms)}
+#drawer .d-link:hover{background:#EFFAFF}
+#drawer .d-cat{font-weight:700;font-size:14.5px;padding-left:20px}
+.acc-btn .chev{fill:#173A4A;transition:transform .3s ease;flex:none}
+.acc-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.32,.72,.28,1)}
+.acc-panel.open{grid-template-rows:1fr}
+.acc-in{overflow:hidden;min-height:0;display:flex;flex-direction:column}
+#drawer .d-cta{margin-top:12px;text-align:center}
+.drawer-note{margin-top:auto;padding:14px 16px;border-top:2px solid #BAE6FD;font-size:13.5px;font-weight:700;color:#173A4A;opacity:.85;line-height:1.55}
+.cart-wrap{max-width:880px;margin:6px auto 0}
+.cline-main{flex:1;min-width:0}
+.cline.leaving{transition:height .35s ease,opacity .3s ease,margin .35s ease,padding .35s ease;overflow:hidden;pointer-events:none}
+.cart-totals{background:#fff;border-radius:18px;box-shadow:0 6px 20px rgba(23,58,74,.08);padding:22px;margin-top:18px}
+.cart-totals .place-btn{margin-top:14px}
+.cart-totals .back-btn{margin-top:12px}
+@keyframes totalPulse{30%{transform:scale(1.12)}}
+.pulse{animation:totalPulse .35s ease;display:inline-block}
+.done-box[hidden]{display:none}
+.done-box.show{display:block;animation:donePop .45s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes donePop{from{opacity:0;transform:scale(.92) translateY(14px)}to{opacity:1;transform:none}}
+.ckmark{width:84px;height:84px;fill:none;stroke:#22A565;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 16px}
+.ckmark .ckm-circle{stroke-dasharray:151;stroke-dashoffset:151}
+.ckmark .ckm-tick{stroke-dasharray:40;stroke-dashoffset:40}
+.done-box.show .ckmark .ckm-circle{animation:drawStroke .6s ease forwards}
+.done-box.show .ckmark .ckm-tick{animation:drawStroke .38s ease .5s forwards}
+@keyframes drawStroke{to{stroke-dashoffset:0}}
+.place-btn{position:relative}
+.place-btn.loading{opacity:.85;pointer-events:none}
+.place-btn.loading::after{content:"";width:20px;height:20px;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;position:absolute;right:18px;top:50%;margin-top:-10px;animation:spinAnim .7s linear infinite}
+@keyframes spinAnim{to{transform:rotate(360deg)}}
+.timeline{position:relative}
+.tl-progress{position:absolute;left:8px;width:2px;height:0;background:#34D399;z-index:0;transition:height 1s cubic-bezier(.4,0,.2,1) .15s;border-radius:2px}
+.timeline.anim li .dot{transform:scale(0)}
+.timeline.anim li.tl-in .dot{animation:dotPop .38s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i,0)*200ms + 100ms)}
+.timeline.anim li>div{opacity:0;transform:translateY(10px)}
+.timeline.anim li.tl-in>div{animation:fadeUp .4s ease both;animation-delay:calc(var(--i,0)*200ms + 200ms)}
+@keyframes dotPop{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wa-float{overflow:visible}
+.wa-float::after{content:"";position:absolute;inset:-2px;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.45);animation:waPulse 2.2s ease-out infinite;pointer-events:none}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fc-frame{display:block;overflow:hidden;border-radius:11px}
+.sticky-bar .sb-btn{background:#0EA5E9;color:#fff;border:0;border-radius:12px;font-weight:900;padding:10px 18px;font-size:14.5px;text-decoration:none}
+
 </style>
 </head>
-<body>
+<body data-page="home">
 <header class="site-head"><div class="wrap head-in">
-<a class="brand" href="#" data-action="nav-home" aria-label="Collection's by Zoni — home"><img class="head-logo" src="https://collections-by-zoni.surge.sh/products/logo.jpg" alt="Collection's by Zoni logo" width="44" height="44"><span class="wordmark">Collection's <span>by Zoni</span><small>Little style, big smile</small></span></a>
+<a class="brand" href="design-4.html" aria-label="Collection's by Zoni — home"><img class="head-logo" src="https://collections-by-zoni.surge.sh/products/logo.jpg" alt="Collection's by Zoni logo" width="44" height="44"><span class="wordmark">Collection's <span>by Zoni</span><small>Little style, big smile</small></span></a>
 <nav class="main-nav" aria-label="Main navigation">
-<button class="nav-btn" data-action="nav-home">Home</button>
-<span class="nav-drop"><button class="nav-btn" data-action="shop-menu" aria-haspopup="true" aria-expanded="false">Shop <span class="caret" aria-hidden="true">&#9662;</span></button><span class="drop-menu" id="shopMenu"><button class="drop-item" data-action="cat-link" data-cat="Track Suits">Track Suits</button><button class="drop-item" data-action="cat-link" data-cat="Denim Sets">Denim Sets</button><button class="drop-item" data-action="cat-link" data-cat="Shirts & Sets">Shirts & Sets</button><button class="drop-item" data-action="cat-link" data-cat="Sweatshirt Sets">Sweatshirt Sets</button><button class="drop-item" data-action="cat-link" data-cat="Winter Sets">Winter Sets</button></span></span>
-<button class="nav-btn" data-action="nav-track">Track Order</button>
-<button class="nav-btn" data-action="nav-contact">Contact</button>
+<a class="nav-btn" href="design-4.html">Home</a>
+<span class="nav-drop"><button class="nav-btn" id="shopToggle" data-action="shop-menu" aria-haspopup="true" aria-expanded="false">Shop <span class="caret" aria-hidden="true">&#9662;</span></button><span class="drop-menu" id="shopMenu"><a class="drop-item" href="shop-4.html?cat=Track%20Suits">Track Suits</a><a class="drop-item" href="shop-4.html?cat=Denim%20Sets">Denim Sets</a><a class="drop-item" href="shop-4.html?cat=Shirts%20%26%20Sets">Shirts & Sets</a><a class="drop-item" href="shop-4.html?cat=Sweatshirt%20Sets">Sweatshirt Sets</a><a class="drop-item" href="shop-4.html?cat=Winter%20Sets">Winter Sets</a><a class="drop-item" href="shop-4.html">All Products</a></span></span>
+<a class="nav-btn" href="track-4.html">Track Order</a>
+<a class="nav-btn" href="#contact">Contact</a>
 </nav>
 <div class="head-actions">
-<button class="icon-btn" data-action="focus-search" aria-label="Search products"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
-<button class="cart-btn" data-action="open-cart" aria-label="Open cart"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.13.12-.27.12-.42 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg><span class="badge" id="cartCount">0</span></button>
-<button class="btn primary cta-btn" data-action="nav-shop">Shop Now</button>
-<button class="burger" data-action="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+<a class="icon-btn" href="shop-4.html#searchInput" aria-label="Search products"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+<a class="cart-btn" href="cart-4.html" aria-label="View cart"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.13.12-.27.12-.42 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg><span class="badge" id="cartCount">0</span></a>
+<a class="btn primary cta-btn" href="shop-4.html">Shop Now</a>
+<button class="burger" data-action="drawer-open" aria-label="Open menu"><span></span><span></span><span></span></button>
 </div>
-</div>
-<div class="mobile-menu" id="mobileMenu">
-<button class="m-link" data-action="nav-home">Home</button>
-<div class="m-label">Shop by Category</div>
-<button class="m-link m-cat" data-action="cat-link" data-cat="Track Suits">Track Suits</button><button class="m-link m-cat" data-action="cat-link" data-cat="Denim Sets">Denim Sets</button><button class="m-link m-cat" data-action="cat-link" data-cat="Shirts & Sets">Shirts & Sets</button><button class="m-link m-cat" data-action="cat-link" data-cat="Sweatshirt Sets">Sweatshirt Sets</button><button class="m-link m-cat" data-action="cat-link" data-cat="Winter Sets">Winter Sets</button>
-<button class="m-link" data-action="nav-track">Track Order</button>
-<button class="m-link" data-action="nav-contact">Contact</button>
-<button class="btn primary m-cta" data-action="nav-shop">Shop Now</button>
 </div>
 </header>
+<div id="drawerBackdrop" data-action="drawer-close"></div>
+<aside id="drawer" aria-label="Menu">
+<div class="drawer-top"><span class="drawer-brand"><img class="head-logo" src="https://collections-by-zoni.surge.sh/products/logo.jpg" alt="" width="38" height="38"><b>Collection's by Zoni</b></span><button class="close-x" data-action="drawer-close" aria-label="Close menu">&times;</button></div>
+<nav class="drawer-nav">
+<a class="d-link" style="--dl:40ms" href="design-4.html">Home</a>
+<button class="d-link acc-btn" style="--dl:80ms" data-action="acc-toggle" aria-expanded="false">Shop by Category <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+<div class="acc-panel" id="accPanel"><div class="acc-in"><a class="d-link d-cat" style="--dl:150ms" href="shop-4.html?cat=Track%20Suits">Track Suits</a><a class="d-link d-cat" style="--dl:150ms" href="shop-4.html?cat=Denim%20Sets">Denim Sets</a><a class="d-link d-cat" style="--dl:150ms" href="shop-4.html?cat=Shirts%20%26%20Sets">Shirts & Sets</a><a class="d-link d-cat" style="--dl:150ms" href="shop-4.html?cat=Sweatshirt%20Sets">Sweatshirt Sets</a><a class="d-link d-cat" style="--dl:150ms" href="shop-4.html?cat=Winter%20Sets">Winter Sets</a><a class="d-link d-cat" style="--dl:190ms" href="shop-4.html">All Products</a></div></div>
+<a class="d-link" style="--dl:120ms" href="track-4.html">Track Order</a>
+<a class="d-link" style="--dl:160ms" href="#contact">Contact</a>
+<a class="btn primary d-cta" style="--dl:200ms" href="shop-4.html">Shop Now</a>
+</nav>
+<div class="drawer-note">WhatsApp: <a href="https://wa.me/923416008008" target="_blank" rel="noopener">0341 600 8008</a><br>Cash on Delivery all over Pakistan</div>
+</aside>
 <main>
-<section id="view-home" class="view active">
 <header class="hero"><div class="wrap hero-in">
-<div class="hero-text"><span class="hero-eyebrow">Fresh This Season</span>
-<h1>Fresh styles for <span class="accent">cool</span> little kids</h1>
-<p class="hero-sub">Bright, breezy and built for play — shop track suits, denim sets, sweatshirt sets and winter wear for ages 1 to 14, delivered from Rahim Yar Khan to all of Pakistan.</p>
-<div class="hero-ctas"><button class="btn primary big" data-action="nav-shop">Shop Now</button><button class="btn ghost big" data-action="nav-track">Track Order</button></div><div class="stats"><div class="stat"><b>500+</b> Happy Families</div><div class="stat">Cash on Delivery</div><div class="stat"><b>7-Day</b> Easy Exchange</div><div class="stat">Delivery All Over Pakistan</div></div></div>
-<div class="hero-cards">
-<div class="float-card fc-1" data-action="open" data-id="1"><img src="https://collections-by-zoni.surge.sh/products/p01.jpg" alt="BOLD Sweatshirt &amp; White Cargo Set"><div class="fc-name">BOLD Sweatshirt &amp; White Cargo Set</div><div class="fc-price">Rs. 2,199</div></div>
-<div class="float-card fc-2" data-action="open" data-id="14"><img src="https://collections-by-zoni.surge.sh/products/p14.jpg" alt="Mint Green Track Suit"><div class="fc-name">Mint Green Track Suit</div><div class="fc-price">Rs. 2,499</div></div>
-<div class="float-card fc-3" data-action="open" data-id="24"><img src="https://collections-by-zoni.surge.sh/products/p24.jpg" alt="Blue Polo Hoodie &amp; Joggers Set"><div class="fc-name">Blue Polo Hoodie &amp; Joggers Set</div><div class="fc-price">Rs. 2,499</div></div>
+<div class="hero-text"><span class="hero-eyebrow rv">Fresh This Season</span>
+<h1 class="rv">Fresh styles for <span class="accent">cool</span> little kids</h1>
+<p class="hero-sub rv">Bright, breezy and built for play — shop track suits, denim sets, sweatshirt sets and winter wear for ages 1 to 14, delivered from Rahim Yar Khan to all of Pakistan.</p>
+<div class="hero-ctas rv"><a class="btn primary big" href="shop-4.html">Shop Now</a><a class="btn ghost big" href="track-4.html">Track Order</a></div><div class="stats rv"><div class="stat"><b>500+</b> Happy Families</div><div class="stat">Cash on Delivery</div><div class="stat"><b>7-Day</b> Easy Exchange</div><div class="stat">Delivery All Over Pakistan</div></div></div>
+<div class="hero-cards rv">
+<a class="float-card fc-1" href="product-4.html?id=1"><span class="fc-frame"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p01.jpg" alt="BOLD Sweatshirt &amp; White Cargo Set"></span><div class="fc-name">BOLD Sweatshirt &amp; White Cargo Set</div><div class="fc-price">Rs. 2,199</div></a>
+<a class="float-card fc-2" href="product-4.html?id=14"><span class="fc-frame"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p14.jpg" alt="Mint Green Track Suit"></span><div class="fc-name">Mint Green Track Suit</div><div class="fc-price">Rs. 2,499</div></a>
+<a class="float-card fc-3" href="product-4.html?id=24"><span class="fc-frame"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p24.jpg" alt="Blue Polo Hoodie &amp; Joggers Set"></span><div class="fc-name">Blue Polo Hoodie &amp; Joggers Set</div><div class="fc-price">Rs. 2,499</div></a>
 </div>
 </div></header>
 <section class="section"><div class="wrap">
-<div class="sec-head"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
-<div class="age-row" id="ageTiles"></div>
+<div class="sec-head rv"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
+<div class="age-row rv" id="ageTiles"></div>
 </div></section>
 <section class="section" id="shop"><div class="wrap">
-<div class="sec-head"><h2>Shop the Collection</h2><p>Real styles from our Facebook page — prices shown are samples for this demo.</p></div>
-<div class="search-box shop-search"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="searchInput" type="search" placeholder="Search track suits, denim sets, shirts..." aria-label="Search products"></div>
-<div class="chips" id="catChips"></div>
+<div class="sec-head rv"><h2>Shop the Collection</h2><p>Real styles from our Facebook page — prices shown are samples for this demo.</p></div>
+<div class="search-box shop-search rv"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="searchInput" type="search" placeholder="Search track suits, denim sets, shirts..." aria-label="Search products"></div>
+<div class="chips rv" id="catChips"></div>
 <div class="res-count" id="resCount"></div>
 <div class="grid" id="grid"></div>
 </div></section>
 <section class="section"><div class="wrap">
-<div class="testi"><h2>Loved by Families</h2><div class="testi-grid" id="testimonials"></div></div>
+<div class="testi rv"><h2>Loved by Families</h2><div class="testi-grid" id="testimonials"></div></div>
 </div></section>
-</section>
-<section id="view-product" class="view"><div class="wrap">
-<button class="back-btn" data-action="back-home">&larr; Back to Shop</button>
-<div id="productDetail" class="pd"></div>
-<div class="reviews"><h3>Customer Reviews</h3>
-<div id="reviewsList"></div>
-<form id="reviewForm" class="rev-form"><h4>Write a Review</h4>
-<div class="form-grid">
-<div class="field"><label for="rv-name">Your Name</label><input id="rv-name" name="rname" required placeholder="e.g. Fatima S."></div>
-<div class="field"><label for="rv-rating">Rating</label><select id="rv-rating" name="rrating"><option value="5">5 — Excellent</option><option value="4">4 — Good</option><option value="3">3 — Average</option><option value="2">2 — Poor</option><option value="1">1 — Bad</option></select></div>
-</div>
-<div class="field"><label for="rv-text">Your Review</label><textarea id="rv-text" name="rtext" rows="3" required placeholder="How was the quality, fit and delivery?"></textarea></div>
-<button class="btn primary" type="submit">Submit Review</button></form>
-</div>
-</div></section>
-<section id="view-checkout" class="view"><div class="wrap">
-<div class="page-head"><h2>Checkout</h2><p>Fill in your delivery details and place your order — no online payment needed.</p></div>
-<div class="ck-grid">
-<div class="ck-card"><h3>Delivery Details</h3>
-<form id="checkoutForm">
-<div id="ckError" class="ck-error"></div>
-<div class="form-grid">
-<div class="field"><label for="ck-name">Full Name *</label><input id="ck-name" name="cname" required placeholder="Your full name"></div>
-<div class="field"><label for="ck-phone">Phone Number *</label><input id="ck-phone" name="cphone" required placeholder="03XX XXXXXXX"></div>
-<div class="field"><label for="ck-whats">WhatsApp Number</label><input id="ck-whats" name="cwhats" placeholder="Same as phone if blank"></div>
-<div class="field"><label for="ck-city">City</label><input id="ck-city" name="ccity" placeholder="e.g. Rahim Yar Khan"></div>
-</div>
-<div class="field"><label for="ck-address">Full Address *</label><textarea id="ck-address" name="caddress" rows="2" required placeholder="House, street, area, landmark"></textarea></div>
-<div class="field"><label for="ck-email">Email (optional, for order confirmation)</label><input id="ck-email" name="cemail" type="email" placeholder="you@example.com"></div>
-<div class="pay-note">No online payment — Cash on Delivery or bank transfer after our team confirms your order on WhatsApp.</div>
-<button class="btn primary place-btn" type="submit">Place Order</button>
-</form></div>
-<div class="ck-card"><h3>Order Summary</h3><div id="ckSummary"></div></div>
-</div>
-<button class="back-btn" data-action="back-home">Continue Shopping</button>
-</div></section>
-<section id="view-track" class="view"><div class="wrap">
-<div class="page-head"><h2>Track Your Order</h2><p>Enter your order number from the confirmation screen to see its live status with TCS.</p></div>
-<div class="track-box">
-<form id="trackForm" class="track-form"><input id="trackInput" placeholder="Enter order number, e.g. ZB-1234" aria-label="Order number"><button class="btn primary" type="submit">Track Order</button></form>
-<div id="trackResult" style="margin-top:20px"></div>
-</div>
-<div style="text-align:center"><button class="back-btn" data-action="back-home">Back to Shop</button></div>
-</div></section>
-<section id="view-done" class="view"><div class="wrap"><div id="doneBox" class="done-box"></div></div></section>
 </main>
 <footer id="contact"><div class="wrap">
 <div class="foot-grid">
@@ -379,10 +422,10 @@ body{padding-bottom:64px}}
 <p style="margin-top:10px">WhatsApp: <a href="https://wa.me/923416008008" target="_blank" rel="noopener">0341 600 8008</a></p>
 <p style="margin-top:6px">Email: <a href="mailto:contact@collectionsbyzoni.com">contact@collectionsbyzoni.com</a></p></div>
 <div><h4>Quick Links</h4><ul>
-<li><a href="#" data-action="nav-home">Home</a></li>
-<li><a href="#shop" data-action="nav-shop">Shop</a></li>
-<li><a href="#" data-action="nav-track">Track Order</a></li>
-<li><a href="#" data-action="open-cart">Your Cart</a></li>
+<li><a href="design-4.html">Home</a></li>
+<li><a href="shop-4.html">Shop</a></li>
+<li><a href="track-4.html">Track Order</a></li>
+<li><a href="cart-4.html">Your Cart</a></li>
 </ul></div>
 <div><h4>Categories</h4><ul id="footCats"></ul></div>
 <div><h4>Stay in the Loop</h4>
@@ -393,17 +436,7 @@ body{padding-bottom:64px}}
 </div>
 <div class="foot-bottom"><span>© 2026 Collection's by Zoni. All rights reserved.</span><span>Demo store — products and photos from our Facebook page; prices are samples.</span></div>
 </div></footer>
-<div id="overlay"></div>
-<aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart">
-<div class="drawer-head"><h3>Your Cart</h3><button class="close-x" data-action="close-cart" aria-label="Close cart">×</button></div>
-<div class="drawer-lines" id="cartLines"></div>
-<div class="drawer-foot">
-<div class="sum-line"><span>Subtotal</span><span id="cartSubtotal">Rs. 0</span></div>
-<div class="sum-line"><span>Delivery</span><span id="cartShip">Rs. 0</span></div>
-<div class="sum-line total"><span>Total</span><span id="cartTotal">Rs. 0</span></div>
-<button class="btn primary place-btn" id="ckBtn" data-action="checkout" style="margin-top:12px">Proceed to Checkout</button>
-</div></aside>
-<div class="sticky-bar" id="stickyBar"><div class="sb-info"><span id="stickyCount">0 items</span> · <b id="stickyTotal">Rs. 0</b></div><button data-action="open-cart">View Cart</button></div>
+<div class="sticky-bar" id="stickyBar"><div class="sb-info"><span id="stickyCount">0 items</span> · <b id="stickyTotal">Rs. 0</b></div><a class="sb-btn" href="cart-4.html">View Cart</a></div>
 <a class="wa-float" href="https://wa.me/923416008008" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="29" height="29" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
 <div id="toast" role="status"></div>
 <script>
@@ -461,208 +494,418 @@ const TESTIMONIALS = [
  {name:"Ayesha K.",city:"Multan",rating:5,text:"Ordered a frock for my daughter's birthday. Size was perfect, delivery was on time and cash on delivery made it easy."},
  {name:"Maryam T.",city:"Bahawalpur",rating:5,text:"The newborn gift set was beautifully packed and so soft. My sister loved it. This is our family store now."}
 ];
+
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function money(n){return SETTINGS.currency + Number(n).toLocaleString("en-US");}
-function storeGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
-function storeSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-function starRow(r,size){let h="";for(let i=1;i<=5;i++){h+='<svg class="star'+(i<=Math.round(r)?" on":"")+'" viewBox="0 0 24 24" width="'+(size||14)+'" height="'+(size||14)+'"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';}return '<span class="stars">'+h+"</span>";}
-function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2200);}
-/* ---------- state ---------- */
-const state = {age:"all",cat:"All",q:"",cart:storeGet("zoni_d"+DESIGN+"_cart")||[],orders:storeGet("zoni_d"+DESIGN+"_orders")||[],current:null,size:null,qty:1};
-function saveCart(){storeSet("zoni_d"+DESIGN+"_cart",state.cart);}
-function saveOrders(){storeSet("zoni_d"+DESIGN+"_orders",state.orders);}
-function byId(id){return PRODUCTS.find(p=>p.id===Number(id));}
-function cartCount(){return state.cart.reduce((a,l)=>a+l.qty,0);}
-function cartSubtotal(){return state.cart.reduce((a,l)=>a+byId(l.id).salePrice*l.qty,0);}
-function shipFee(sub){return state.cart.length===0?0:(sub>=SETTINGS.freeShippingThreshold?0:SETTINGS.flatShippingFee);}
-/* ---------- rendering ---------- */
-function filtered(){return PRODUCTS.filter(p=>(state.age==="all"||p.ages.includes(state.age))&&(state.cat==="All"||p.category===state.cat)&&(!state.q||(p.title+" "+p.category).toLowerCase().includes(state.q.toLowerCase())));}
-function cardHTML(p){
- const off=p.regularPrice>p.salePrice?Math.round((1-p.salePrice/p.regularPrice)*100):0;
- const band=DESIGN===4?'<div class="card-band" style="background:'+CATBAND[p.category]+'"></div>':"";
- const pill=DESIGN===1?'<span class="price-pill">'+money(p.salePrice)+"</span>":'<span class="card-price">'+money(p.salePrice)+"</span>";
- const was=p.regularPrice>p.salePrice?'<span class="was">'+money(p.regularPrice)+"</span>":"";
- const sale=off?'<span class="sale-badge">-'+off+"%</span>":"";
- return '<article class="card" data-action="open" data-id="'+p.id+'">'+band+
- '<div class="card-img"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'" loading="lazy">'+sale+"</div>"+
- '<div class="card-body"><div class="card-cat">'+esc(p.category)+"</div>"+
- '<h3 class="card-title">'+esc(p.title)+"</h3>"+
- '<div class="card-rating">'+starRow(p.rating)+'<span class="rc">'+p.rating+" ("+p.reviewCount+")</span></div>"+
- '<div class="card-foot">'+pill+was+"</div>"+
- '<button class="btn add-btn" data-action="add" data-id="'+p.id+'">Add to Cart</button></div></article>';
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = n => SETTINGS.currency + Number(n).toLocaleString("en-PK");
+const byId = id => PRODUCTS.find(p => p.id == id);
+const storeGet = k => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } };
+const storeSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+function starRow(r, cls){ let h = '<span class="stars">'; for (let i = 1; i <= 5; i++) h += '<svg class="star' + (i <= Math.round(r) ? " on" : "") + '" width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg>'; return h + "</span>"; }
+function toast(msg){ const t = $("#toast"); if (!t) return; t.textContent = msg; t.classList.add("show"); clearTimeout(t._timer); t._timer = setTimeout(() => t.classList.remove("show"), 2400); }
+
+/* ---------- page urls + state (multi-page; cart + last order persist across pages) ---------- */
+const PAGE = (document.body && document.body.dataset) ? (document.body.dataset.page || "home") : "home";
+const P_HOME = "design-" + DESIGN + ".html", P_SHOP = "shop-" + DESIGN + ".html", P_PROD = "product-" + DESIGN + ".html", P_CART = "cart-" + DESIGN + ".html", P_CK = "checkout-" + DESIGN + ".html", P_TRACK = "track-" + DESIGN + ".html";
+const CART_KEY = "zoni_cart_" + DESIGN, ORDER_KEY = "zoni_last_order_" + DESIGN;
+const SHOP_CATS = CATEGORIES.filter(c => c !== "All");
+const FALLBACK = {name:"",city:"Karachi",payment:"Cash on Delivery",date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),items:1,total:2199};
+const state = { cart: storeGet(CART_KEY) || [], lastOrder: storeGet(ORDER_KEY) || null, age:"all", cat:"All", q:"", current:null, size:null, qty:1 };
+
+const cartCountTotal = () => state.cart.reduce((a, l) => a + l.qty, 0);
+const cartSubtotal = () => state.cart.reduce((a, l) => a + l.price * l.qty, 0);
+const shipFee = sub => (sub === 0 || sub >= SETTINGS.freeShippingThreshold) ? 0 : SETTINGS.flatShippingFee;
+function saveCart(){ storeSet(CART_KEY, state.cart); }
+function defaultSize(p){ return p.sizes[Math.min(1, p.sizes.length - 1)]; }
+function addLine(id, size, qty){ const line = state.cart.find(l => l.id === id && l.size === size); if (line) line.qty += qty; else state.cart.push({id:id, size:size, qty:qty, price:byId(id).salePrice}); saveCart(); }
+
+/* ---------- badge + sticky bar ---------- */
+function renderBadge(){
+  const n = cartCountTotal(), b = $("#cartCount");
+  if (b) b.textContent = n;
+  const sc = $("#stickyCount"); if (sc) sc.textContent = n + (n === 1 ? " item" : " items");
+  const st = $("#stickyTotal"); if (st) st.textContent = money(cartSubtotal());
 }
-function renderGrid(){
- const list=filtered();
- $("#grid").innerHTML=list.length?list.map(cardHTML).join(""):'<div class="empty">No products match your filters. Try another age or category.</div>';
- $("#resCount").textContent="Showing "+list.length+" of "+PRODUCTS.length+" products";
- $$(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===state.cat));
- $$(".age-tile").forEach(t=>t.classList.toggle("active",t.dataset.age===state.age));
+function popBadge(){ const b = $("#cartCount"); if (!b) return; b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop"); }
+
+/* ---------- wave cascade reveal (Noor recipe) ---------- */
+let revealIO = null;
+function revealDelay(el){ const p = el.parentElement; if (!p) return 0; const sibs = Array.from(p.children).filter(c => c.classList && c.classList.contains("rv")); const i = sibs.indexOf(el); return Math.min(Math.max(i, 0) * 110, 660); }
+function doReveal(el){
+  if (!el.classList.contains("rv") || el.classList.contains("in")) return;
+  el.style.setProperty("--d", revealDelay(el) + "ms");
+  el.classList.add("in");
+  let cleaned = false;
+  const clean = () => { if (cleaned) return; cleaned = true; el.classList.remove("rv", "in"); el.style.removeProperty("--d"); };
+  el.addEventListener("transitionend", function h(e){ if (e.propertyName === "transform"){ el.removeEventListener("transitionend", h); clean(); } });
+  setTimeout(clean, 2400);
+}
+function armReveal(scope){
+  const els = Array.from((scope || document).querySelectorAll(".rv:not(.in)"));
+  if (!els.length) return;
+  if ("IntersectionObserver" in window){
+    if (!revealIO){
+      revealIO = new IntersectionObserver(entries => { entries.forEach(en => { if (en.isIntersecting){ doReveal(en.target); revealIO.unobserve(en.target); } }); }, { threshold:.12, rootMargin:"0px 0px -8% 0px" });
+    }
+    els.forEach(el => revealIO.observe(el));
+  } else { els.forEach(doReveal); }
+}
+function sweepReveal(){ $$(".rv:not(.in)").forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 0.98 && r.bottom > 0) doReveal(el); }); }
+
+/* ---------- fly to cart (Noor recipe) ---------- */
+function flyToCart(img, cb){
+  const target = $(".cart-btn");
+  let done = false; const fin = () => { if (done) return; done = true; cb && cb(); };
+  if (!img || !target){ fin(); return; }
+  const r1 = img.getBoundingClientRect(), r2 = target.getBoundingClientRect();
+  if (!r1.width || !r2.width){ fin(); return; }
+  const clone = img.cloneNode();
+  clone.className = "fly-clone"; clone.removeAttribute("id");
+  Object.assign(clone.style, { left:r1.left + "px", top:r1.top + "px", width:r1.width + "px", height:r1.height + "px" });
+  document.body.appendChild(clone);
+  const dx = (r2.left + r2.width / 2) - (r1.left + r1.width / 2);
+  const dy = (r2.top + r2.height / 2) - (r1.top + r1.height / 2);
+  const lift = Math.min(170, Math.abs(dy) * 0.35 + 60);
+  try {
+    const anim = clone.animate([
+      { transform:"translate(0,0) scale(1)", opacity:"1" },
+      { transform:"translate(" + (dx * 0.5) + "px," + (dy * 0.55 - lift) + "px) scale(.42)", opacity:".92", offset:.55 },
+      { transform:"translate(" + dx + "px," + dy + "px) scale(.05)", opacity:".45" }
+    ], { duration:700, easing:"cubic-bezier(.45,.02,.35,1)", fill:"forwards" });
+    if (anim.finished && anim.finished.then) anim.finished.then(() => { clone.remove(); fin(); }).catch(() => { clone.remove(); fin(); });
+    else setTimeout(() => { clone.remove(); fin(); }, 730);
+  } catch (e) { clone.remove(); fin(); }
+}
+function addWithFly(img, id, size, qty){
+  addLine(id, size, qty);
+  flyToCart(img, () => { renderBadge(); popBadge(); toast("Added to cart: " + byId(id).title + " (" + size + ")"); });
+}
+
+/* ---------- header / drawer / footer ---------- */
+function closeDropdown(){ const m = $("#shopMenu"); if (m) m.classList.remove("open"); const b = $("#shopToggle"); if (b) b.setAttribute("aria-expanded", "false"); }
+function openDrawer(){ const d = $("#drawer"), bd = $("#drawerBackdrop"); if (d) d.classList.add("open"); if (bd) bd.classList.add("show"); }
+function closeDrawer(){ const d = $("#drawer"), bd = $("#drawerBackdrop"); if (d) d.classList.remove("open"); if (bd) bd.classList.remove("show"); }
+function renderFootCats(){
+  const box = $("#footCats"); if (!box) return;
+  box.innerHTML = SHOP_CATS.map(c => '<li><a href="' + P_SHOP + "?cat=" + encodeURIComponent(c) + '">' + esc(c) + "</a></li>").join("");
+}
+
+/* ---------- product grids (home + shop) ---------- */
+const BAND_COLORS = ["#FF6B5E","#FFB800","#34D399","#38BDF8","#B79CED","#F4A7B9"];
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return PRODUCTS.filter(p =>
+    (state.cat === "All" || p.category === state.cat) &&
+    (state.age === "all" || p.ages.indexOf(state.age) >= 0) &&
+    (!q || p.title.toLowerCase().indexOf(q) >= 0 || p.category.toLowerCase().indexOf(q) >= 0));
+}
+function cardHTML(p, withRv){
+  const off = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice / p.regularPrice) * 100) : 0;
+  const band = CATBAND[p.category] || BAND_COLORS[(p.id - 1) % BAND_COLORS.length];
+  return '<article class="card' + (withRv ? " rv" : "") + '" data-action="open" data-id="' + p.id + '">' +
+    (DESIGN === 4 ? '<div class="card-band" style="background:' + band + '"></div>' : "") +
+    '<a class="card-imglink" href="' + P_PROD + "?id=" + p.id + '"><span class="card-img"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '" loading="lazy">' + (off ? '<span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</span></a>" +
+    '<div class="card-body"><span class="card-cat">' + esc(p.category) + "</span>" +
+    '<a class="card-titlelink" href="' + P_PROD + "?id=" + p.id + '"><h3 class="card-title">' + esc(p.title) + "</h3></a>" +
+    '<span class="card-rating">' + starRow(p.rating) + '<span class="rc">' + p.rating.toFixed(1) + " (" + p.reviewCount + ")</span></span>" +
+    '<span class="card-foot"><span class="card-price">' + money(p.salePrice) + "</span>" + (off ? '<span class="was">' + money(p.regularPrice) + "</span>" : "") + "</span>" +
+    '<button class="btn primary add-btn" data-action="add" data-id="' + p.id + '">Add to Cart</button></div></article>';
+}
+function renderGrid(first){
+  const grid = $("#grid"); if (!grid) return;
+  const list = filtered();
+  const rc = $("#resCount"); if (rc) rc.textContent = "Showing " + list.length + " of " + PRODUCTS.length + " products";
+  grid.innerHTML = list.length ? list.map(p => cardHTML(p, !!first)).join("") : '<div class="empty">No products match your filters. Try another age or category.</div>';
+  if (first) armReveal(grid);
+}
+function renderAgeTiles(){
+  const box = $("#ageTiles"); if (!box) return;
+  box.innerHTML = AGES.map(a => '<button class="age-tile' + (state.age === a ? " active" : "") + '" data-action="age" data-age="' + a + '"><span class="age-num">' + a + '</span><span class="age-lab">Years</span></button>').join("") +
+    '<button class="age-tile' + (state.age === "all" ? " active" : "") + '" data-action="age" data-age="all"><span class="age-num">All</span><span class="age-lab">Ages</span></button>';
+}
+function renderChips(){
+  const box = $("#catChips"); if (!box) return;
+  box.innerHTML = CATEGORIES.map(c => '<button class="chip' + (state.cat === c ? " active" : "") + '" data-action="cat" data-cat="' + esc(c) + '">' + esc(c) + "</button>").join("");
+}
+function initShopSection(){
+  if (PAGE === "shop"){
+    const qs = new URLSearchParams(location.search);
+    if (qs.get("cat") && SHOP_CATS.indexOf(qs.get("cat")) >= 0) state.cat = qs.get("cat");
+    if (qs.get("age") && AGES.indexOf(qs.get("age")) >= 0) state.age = qs.get("age");
+    if (qs.get("q")) state.q = qs.get("q");
+  }
+  const si = $("#searchInput"); if (si && state.q) si.value = state.q;
+  renderAgeTiles(); renderChips(); renderGrid(true);
+  if (location.hash === "#searchInput" && si) setTimeout(() => { try { si.focus({ preventScroll:true }); } catch (e) { si.focus(); } }, 60);
 }
 function renderTestimonials(){
- $("#testimonials").innerHTML=TESTIMONIALS.map(t=>'<div class="tcard">'+starRow(t.rating,16)+'<p>"'+esc(t.text)+'"</p><div class="tname">'+esc(t.name)+'</div><div class="tcity">'+esc(t.city)+"</div></div>").join("");
+  const box = $("#testimonials"); if (!box) return;
+  box.innerHTML = TESTIMONIALS.map(t => '<div class="tcard">' + starRow(t.rating) + "<p>&ldquo;" + esc(t.text) + '&rdquo;</p><div class="tname">' + esc(t.name) + '</div><div class="tcity">' + esc(t.city) + "</div></div>").join("");
+}
+
+/* ---------- product page ---------- */
+function reviewHTML(r){
+  return '<div class="review"><div class="rev-head"><strong>' + esc(r.name) + "</strong>" + starRow(r.rating) + '<span class="rc">' + esc(r.city) + " &middot; " + esc(r.date) + '</span></div><p>' + esc(r.text) + "</p></div>";
 }
 function renderProduct(p){
- state.current=p; state.qty=1; state.size=p.sizes[Math.min(1,p.sizes.length-1)];
- const off=p.regularPrice>p.salePrice?Math.round((1-p.salePrice/p.regularPrice)*100):0;
- $("#productDetail").innerHTML=
- '<div class="pd-img"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'"></div>'+
- '<div class="pd-info"><div class="card-cat">'+esc(p.category)+'</div>'+
- '<h2 class="pd-title">'+esc(p.title)+'</h2>'+
- '<div class="card-rating">'+starRow(p.rating,16)+'<span class="rc">'+p.rating+" · "+p.reviewCount+" reviews</span></div>"+
- '<div class="pd-price">'+money(p.salePrice)+(p.regularPrice>p.salePrice?' <span class="was">'+money(p.regularPrice)+'</span> <span class="sale-badge">Save '+off+"%</span>":"")+"</div>"+
- '<p class="pd-desc">'+esc(p.shortDesc)+"</p>"+
- (p.fbNote?'<p class="fb-note">Sizes as posted on our Facebook page.</p>':"")+
- p.fullDesc.map(d=>'<p class="pd-desc2">'+esc(d)+"</p>").join("")+
- '<div class="pd-label">Select Size</div><div class="sizes">'+p.sizes.map(s=>'<button class="size-pill'+(s===state.size?" active":"")+'" data-action="size" data-size="'+esc(s)+'">'+esc(s)+"</button>").join("")+"</div>"+
- '<p class="admin-note">Sizes are managed from the admin panel in the full store — sizes can be added or edited anytime.</p>'+
- '<div class="pd-label">Quantity</div><div class="qty-row"><button class="qty-btn" data-action="qty-dec">−</button><span id="pdQty">1</span><button class="qty-btn" data-action="qty-inc">+</button></div>'+
- '<div class="pd-actions"><button class="btn primary big" data-action="add-current">Add to Cart</button><button class="btn ghost big" data-action="open-cart">View Cart</button></div>'+
- '<div class="pd-meta">Cash on Delivery available · Delivery Rs 200 (FREE above Rs 3,000) · 7-Day Easy Exchange</div></div>';
- renderReviews(p);
- go("product");
+  state.current = p; state.size = defaultSize(p); state.qty = 1;
+  const off = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice / p.regularPrice) * 100) : 0;
+  $("#productDetail").innerHTML =
+    '<div class="pd-img"><img id="pdImg" src="' + p.featuredImage + '" alt="' + esc(p.title) + '"></div>' +
+    '<div class="pd-info"><span class="card-cat">' + esc(p.category) + '</span><h1 class="pd-title">' + esc(p.title) + "</h1>" +
+    '<span class="card-rating">' + starRow(p.rating) + '<span class="rc">' + p.rating.toFixed(1) + " &middot; " + p.reviewCount + " reviews</span></span>" +
+    '<div class="pd-price">' + money(p.salePrice) + (off ? '<span class="was">' + money(p.regularPrice) + '</span><span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</div>" +
+    '<p class="pd-desc">' + esc(p.shortDesc) + "</p>" + p.fullDesc.slice(1).map(d => '<p class="pd-desc2">' + esc(d) + "</p>").join("") +
+    (p.fbNote ? '<p class="fb-note">Sizes as posted on our Facebook page.</p>' : "") +
+    '<div class="pd-label">Select Size</div><div class="sizes" id="pdSizes">' + p.sizes.map(s => '<button class="size-pill' + (s === state.size ? " active" : "") + '" data-action="size" data-size="' + esc(s) + '">' + esc(s) + "</button>").join("") + "</div>" +
+    '<p class="admin-note">Sizes are set by the admin for each product (demo data).</p>' +
+    '<div class="pd-label">Quantity</div><div class="qty-row"><button class="qty-btn" data-action="qty-dec" aria-label="Decrease quantity">&minus;</button><span id="pdQty">1</span><button class="qty-btn" data-action="qty-inc" aria-label="Increase quantity">+</button></div>' +
+    '<div class="pd-actions"><button class="btn primary big" data-action="add-current">Add to Cart</button><a class="btn ghost big" href="' + P_CART + '">View Cart</a></div>' +
+    '<p class="pd-meta">Cash on Delivery available &middot; Delivery ' + money(SETTINGS.flatShippingFee) + ", free above " + money(SETTINGS.freeShippingThreshold) + " &middot; WhatsApp " + esc(SETTINGS.phoneDisplay) + "</p></div>";
+  const rl = $("#reviewsList");
+  if (rl) rl.innerHTML = p.reviews.map(reviewHTML).join("");
 }
-function renderReviews(p){
- const box=$("#reviewsList"); if(!box) return;
- box.innerHTML=p.reviews.map(r=>'<div class="review"><div class="rev-head">'+starRow(r.rating)+'<strong>'+esc(r.name)+'</strong><span class="tcity">'+esc(r.city)+" · "+esc(r.date)+'</span></div><p>'+esc(r.text)+"</p></div>").join("");
+function initProduct(){
+  const id = Number(new URLSearchParams(location.search).get("id"));
+  renderProduct(byId(id) || PRODUCTS[0]);
 }
-function addToCart(id,size,qty){
- const key=id+"|"+size;
- const line=state.cart.find(l=>l.key===key);
- if(line) line.qty+=qty; else state.cart.push({key:key,id:Number(id),size:size,qty:qty});
- saveCart(); renderCart();
- toast("Added to cart: "+byId(id).title+" ("+size+")");
+
+/* ---------- cart page ---------- */
+function lineHTML(l){
+  const p = byId(l.id); if (!p) return "";
+  return '<div class="cline rv" data-key="' + l.id + "|" + esc(l.size) + '"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '">' +
+    '<div class="cline-main"><div class="cline-title">' + esc(p.title) + '</div><div class="cline-size">Size: ' + esc(l.size) + (l.qty > 1 ? ' &middot; <span class="cline-unit">' + money(l.price) + " each</span>" : "") + "</div>" +
+    '<div class="cline-price" data-line-total>' + money(l.price * l.qty) + "</div>" +
+    '<div class="qty-row sm"><button class="qty-btn" data-action="line-dec" aria-label="Decrease quantity">&minus;</button><span data-line-qty>' + l.qty + '</span><button class="qty-btn" data-action="line-inc" aria-label="Increase quantity">+</button></div></div>' +
+    '<button class="line-remove" data-action="line-remove" aria-label="Remove item">&times;</button></div>';
 }
-function renderCart(){
- const n=cartCount(), sub=cartSubtotal(), fee=shipFee(sub), tot=sub+fee;
- $("#cartCount").textContent=n;
- const sb=$("#stickyTotal"); if(sb){$("#stickyCount").textContent=n+" item"+(n===1?"":"s"); sb.textContent=money(sub);}
- $("#cartLines").innerHTML=state.cart.length?state.cart.map(l=>{const p=byId(l.id);return '<div class="cline"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'"><div class="cline-info"><div class="cline-title">'+esc(p.title)+'</div><div class="cline-size">Size: '+esc(l.size)+'</div><div class="cline-price">'+money(p.salePrice)+'</div><div class="qty-row sm"><button class="qty-btn" data-action="line-dec" data-key="'+esc(l.key)+'">−</button><span>'+l.qty+'</span><button class="qty-btn" data-action="line-inc" data-key="'+esc(l.key)+'">+</button></div></div><button class="line-remove" data-action="line-remove" data-key="'+esc(l.key)+'" aria-label="Remove item">×</button></div>';}).join(""):'<div class="empty">Your cart is empty. Add something your little one will love.</div>';
- $("#cartSubtotal").textContent=money(sub);
- $("#cartShip").textContent=fee===0?(state.cart.length?"FREE":"Rs. 0"):money(fee);
- $("#cartTotal").textContent=money(tot);
- const ck=$("#ckBtn"); if(ck) ck.disabled=state.cart.length===0;
+function pulseEls(els){ els.forEach(el => { if (!el) return; el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse"); }); }
+function renderCartTotals(pulse){
+  const sub = cartSubtotal(), ship = shipFee(sub);
+  const sEl = $("#cartSubtotal"), shEl = $("#cartShip"), tEl = $("#cartTotal");
+  if (sEl) sEl.textContent = money(sub);
+  if (shEl) shEl.textContent = ship === 0 ? "FREE" : money(ship);
+  if (tEl) tEl.textContent = money(sub + ship);
+  if (pulse) pulseEls([tEl]);
+  const ck = $("#ckBtn"); const tot = $("#cartTotals");
+  if (state.cart.length === 0){ if (tot) tot.style.display = "none"; }
+  else if (tot) tot.style.display = "";
 }
+function renderCartPage(){
+  const box = $("#cartLines"); if (!box) return;
+  if (!state.cart.length){
+    box.innerHTML = '<div class="empty">Your cart is empty.<br><a class="btn primary" href="' + P_SHOP + '" style="margin-top:14px;display:inline-block">Start Shopping</a></div>';
+  } else {
+    box.innerHTML = state.cart.map(lineHTML).join("");
+    armReveal(box);
+  }
+  renderCartTotals(false); renderBadge();
+}
+function changeLine(key, delta, btn){
+  const line = state.cart.find(l => (l.id + "|" + l.size) === key); if (!line) return;
+  line.qty += delta;
+  if (line.qty <= 0){ removeLine(key, btn); return; }
+  saveCart();
+  const row = btn.closest(".cline");
+  if (row){
+    const q = row.querySelector("[data-line-qty]"); if (q) q.textContent = line.qty;
+    const lt = row.querySelector("[data-line-total]"); if (lt){ lt.textContent = money(line.price * line.qty); pulseEls([lt]); }
+    const unit = row.querySelector(".cline-unit"); if (unit) unit.textContent = money(line.price) + " each";
+  }
+  renderCartTotals(true); renderBadge();
+}
+function removeLine(key, btn){
+  state.cart = state.cart.filter(l => (l.id + "|" + l.size) !== key);
+  saveCart(); renderBadge(); renderCartTotals(true);
+  const row = btn ? btn.closest(".cline") : null;
+  if (row){
+    row.classList.add("leaving");
+    row.style.height = row.offsetHeight + "px";
+    requestAnimationFrame(() => { row.style.height = "0px"; row.style.opacity = "0"; row.style.marginBottom = "0px"; row.style.paddingTop = "0px"; row.style.paddingBottom = "0px"; });
+    setTimeout(() => { renderCartPage(); }, 400);
+  } else renderCartPage();
+  toast("Removed from cart");
+}
+
+/* ---------- checkout ---------- */
 function renderCkSummary(){
- const sub=cartSubtotal(), fee=shipFee(sub);
- $("#ckSummary").innerHTML=state.cart.map(l=>{const p=byId(l.id);return '<div class="sum-line"><span>'+esc(p.title)+" · "+esc(l.size)+" × "+l.qty+'</span><span>'+money(p.salePrice*l.qty)+"</span></div>";}).join("")+
- '<div class="sum-line"><span>Subtotal</span><span>'+money(sub)+'</span></div><div class="sum-line"><span>Delivery</span><span>'+(fee===0?"FREE":money(fee))+'</span></div><div class="sum-line total"><span>Total</span><span>'+money(sub+fee)+"</span></div>";
+  const box = $("#ckSummary"); if (!box) return;
+  const sub = cartSubtotal(), ship = shipFee(sub);
+  box.innerHTML = (state.cart.length ? state.cart.map(l => { const p = byId(l.id); return '<div class="sum-line"><span>' + esc(p ? p.title : "Item") + " (" + esc(l.size) + ") &times; " + l.qty + "</span><span>" + money(l.price * l.qty) + "</span></div>"; }).join("") : '<div class="sum-line"><span>Your cart is empty</span><span>' + money(0) + "</span></div>") +
+    '<div class="sum-line"><span>Subtotal</span><span>' + money(sub) + '</span></div>' +
+    '<div class="sum-line"><span>Delivery</span><span>' + (ship === 0 ? "FREE" : money(ship)) + '</span></div>' +
+    '<div class="sum-line total"><span>Total</span><span>' + money(sub + ship) + "</span></div>";
 }
-function go(view){
- $$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));
- window.scrollTo({top:0});
- if(view==="checkout") renderCkSummary();
+function placeOrder(form){
+  const fv = n => { const el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ""; };
+  const name = fv("cname"), phone = fv("cphone"), wa = fv("cwhats") || phone, city = fv("ccity"), address = fv("caddress"), email = fv("cemail");
+  const err = $("#ckError");
+  if (!name || !phone || !address){ if (err){ err.textContent = "Please fill your full name, phone number and complete address so we can deliver your order."; err.style.display = "block"; } return; }
+  if (err) err.style.display = "none";
+  if (!state.cart.length){ toast("Your cart is empty."); return; }
+  const btn = $("#placeBtn");
+  if (btn){ btn.disabled = true; btn.classList.add("loading"); const lab = btn.querySelector(".po-label"); if (lab) lab.textContent = "Placing Order..."; }
+  setTimeout(() => {
+    const sub = cartSubtotal(), ship = shipFee(sub);
+    const order = {
+      orderNumber: "ZB-" + (1000 + Math.floor(Math.random() * 9000)),
+      name:name, phone:phone, whatsapp:wa, city:city || "Rahim Yar Khan", email:email,
+      payment:fv("payment") || "Cash on Delivery",
+      date:new Date().toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric" }),
+      items:cartCountTotal(), total:sub + ship
+    };
+    state.lastOrder = order; storeSet(ORDER_KEY, order);
+    state.cart = []; saveCart(); renderBadge();
+    const wrap = $("#ckWrap"); if (wrap) wrap.style.display = "none";
+    const back = $("#ckBack"); if (back) back.style.display = "none";
+    const box = $("#doneBox");
+    if (box){
+      box.innerHTML = '<svg class="ckmark" viewBox="0 0 52 52" aria-hidden="true"><circle class="ckm-circle" cx="26" cy="26" r="24"></circle><path class="ckm-tick" d="M15 27l7.5 7.5L37 19"></path></svg>' +
+        "<h2>Thank you, " + esc(name.split(" ")[0]) + "!</h2>" +
+        '<p class="done-id">Your order number is <strong>' + esc(order.orderNumber) + "</strong></p>" +
+        "<p>Items: " + order.items + " · Total: <strong>" + money(order.total) + "</strong> · Payment: " + esc(order.payment) + "</p>" +
+        (email ? '<p>A confirmation email has been sent to <strong>' + esc(email) + "</strong>.</p>" : "") +
+        "<p>Our team will confirm your order on WhatsApp (" + esc(wa) + ") shortly, then pack it and hand it to TCS.</p>" +
+        '<div class="pd-actions" style="justify-content:center"><a class="btn primary big" href="' + P_TRACK + '">Track Your Order</a><a class="btn ghost big" href="' + P_HOME + '">Continue Shopping</a></div>';
+      box.hidden = false;
+      requestAnimationFrame(() => { box.classList.add("show"); box.scrollIntoView({ block:"center", behavior:"smooth" }); });
+    }
+  }, 900);
 }
-function openCart(){$("#cartDrawer").classList.add("open");$("#overlay").classList.add("show");}
-function closeCart(){$("#cartDrawer").classList.remove("open");$("#overlay").classList.remove("show");}
-function timelineHTML(order,isDemo){
- const steps=[["Order Placed","Your order has been received."],["Packed","Your items are packed and ready."],["Shipped via TCS","Handed to TCS courier for delivery."],["Out for Delivery","The rider is on the way to your address."]];
- const doneUpto=isDemo?3:2;
- return (isDemo?'<p class="demo-note">Demo timeline — place an order in this demo to track it live here.</p>':"")+
- '<div class="track-head"><strong>'+esc(order?order.orderNumber:"ZB-DEMO")+"</strong>"+(order?'<span>'+esc(order.customerName)+" · "+esc(order.city)+" · "+money(order.total)+"</span>":"<span>Courier: TCS</span>")+"</div>"+
- '<ol class="timeline">'+steps.map((s,i)=>'<li class="'+(i<doneUpto?"done":(i===doneUpto?"current":""))+'"><span class="dot"></span><div><strong>'+s[0]+'</strong><p>'+s[1]+"</p></div></li>").join("")+"</ol>"+
- '<p class="track-courier">Courier: <strong>TCS</strong> · Need help? WhatsApp us at <a href="'+SETTINGS.whatsapp+'" target="_blank" rel="noopener">'+SETTINGS.phoneDisplay+"</a></p>";
+
+/* ---------- track order ---------- */
+const TRACK_STEPS = [
+  { t:"Order Placed", d:"Your order has been received." },
+  { t:"Packed", d:"Your items are packed and ready." },
+  { t:"Shipped via TCS", d:"Handed to TCS courier for delivery." },
+  { t:"Out for Delivery", d:"The rider is on the way to your address." }
+];
+function timelineHTML(o, isDemo){
+  const doneUpto = isDemo ? 3 : 2;
+  return (isDemo ? '<p class="demo-note">Demo timeline — place an order in this demo to track it live here.</p>' : "") +
+    '<div class="track-head"><strong>' + esc(o.orderNumber) + "</strong>" + (isDemo ? "<span>Courier: TCS</span>" : "<span>" + esc(o.name) + " · " + esc(o.city) + " · " + money(o.total) + "</span>") + "</div>" +
+    '<ol class="timeline anim"><span class="tl-progress"></span>' + TRACK_STEPS.map((s, i) =>
+      '<li class="' + (i < doneUpto ? "done" : (i === doneUpto ? "current" : "")) + '"><span class="dot"></span><div><strong>' + s.t + "</strong><p>" + s.d + "</p></div></li>").join("") + "</ol>" +
+    '<p class="track-courier">Courier: <strong>TCS</strong> · Need help? WhatsApp us at <a href="' + SETTINGS.whatsapp + '" target="_blank" rel="noopener">' + esc(SETTINGS.phoneDisplay) + "</a></p>";
 }
-/* ---------- events (single delegated listeners, guarded) ---------- */
-function bind(){
- if(document.body.dataset.zoniBound) return; document.body.dataset.zoniBound="1";
- document.addEventListener("click",e=>{
-  const el=e.target.closest("[data-action]"); 
-  if(e.target.id==="overlay"){closeCart();return;}
-  if(!el) return;
-  const a=el.dataset.action;
-  if(el.tagName==="A") e.preventDefault();
-  const sm=$("#shopMenu"); if(sm && a!=="shop-menu" && !e.target.closest(".nav-drop")) sm.classList.remove("open");
-  if(a==="add"){e.stopPropagation();const p=byId(el.dataset.id);addToCart(p.id,p.sizes[Math.min(1,p.sizes.length-1)],1);}
-  else if(a==="open"){const p=byId(el.dataset.id); if(p) renderProduct(p);}
-  else if(a==="size"){state.size=el.dataset.size;$$(".size-pill").forEach(s=>s.classList.toggle("active",s.dataset.size===state.size));}
-  else if(a==="qty-inc"){state.qty++;$("#pdQty").textContent=state.qty;}
-  else if(a==="qty-dec"){if(state.qty>1)state.qty--;$("#pdQty").textContent=state.qty;}
-  else if(a==="add-current"){addToCart(state.current.id,state.size,state.qty);openCart();}
-  else if(a==="open-cart"){openCart();}
-  else if(a==="close-cart"){closeCart();}
-  else if(a==="checkout"){if(state.cart.length){closeCart();go("checkout");}}
-  else if(a==="age"){const v=el.dataset.age;state.age=(state.age===v)?"all":v;renderGrid();document.getElementById("shop").scrollIntoView();}
-  else if(a==="age-all"){state.age="all";renderGrid();}
-  else if(a==="cat"){state.cat=el.dataset.cat;renderGrid();}
-  else if(a==="line-inc"){const l=state.cart.find(x=>x.key===el.dataset.key);if(l){l.qty++;saveCart();renderCart();}}
-  else if(a==="line-dec"){const l=state.cart.find(x=>x.key===el.dataset.key);if(l){l.qty--;if(l.qty<1)state.cart=state.cart.filter(x=>x.key!==l.key);saveCart();renderCart();}}
-  else if(a==="line-remove"){state.cart=state.cart.filter(x=>x.key!==el.dataset.key);saveCart();renderCart();}
-  else if(a==="nav-home"){go("home");}
-  else if(a==="nav-shop"){go("home");setTimeout(()=>document.getElementById("shop").scrollIntoView(),30);}
-  else if(a==="nav-track"){go("track");}
-  else if(a==="nav-contact"){document.getElementById("contact").scrollIntoView();}
-  else if(a==="back-home"){go("home");}
-  else if(a==="track-go"){const id=($("#trackInput").value||"").trim();doTrack(id);}
-  else if(a==="track-placed"){go("track");}
-  const mm2=$("#mobileMenu"); if(mm2 && el.closest("#mobileMenu")) mm2.classList.remove("open");
-  else if(a==="shop-menu"){const m=$("#shopMenu"); if(m){m.classList.toggle("open"); el.setAttribute("aria-expanded", m.classList.contains("open")?"true":"false");}}
-  else if(a==="menu-toggle"){const mm=$("#mobileMenu"); if(mm) mm.classList.toggle("open");}
-  else if(a==="focus-search"){go("home"); setTimeout(()=>{document.getElementById("shop").scrollIntoView(); const inp=$("#searchInput"); if(inp) inp.focus();},40);}
-  else if(a==="cat-link"){const sm3=$("#shopMenu"); if(sm3) sm3.classList.remove("open");state.cat=el.dataset.cat;state.age="all";go("home");renderGrid();setTimeout(()=>document.getElementById("shop").scrollIntoView(),30);}
- });
- const si=$("#searchInput");
- si.addEventListener("input",()=>{state.q=si.value;if(!$("#view-home").classList.contains("active"))go("home");renderGrid();});
- document.addEventListener("submit",e=>{
-  e.preventDefault();
-  const f=e.target;
-  if(f.id==="newsletterForm"){const em=f.querySelector("input[type=email]").value.trim();if(!em)return;$("#newsMsg").innerHTML='<span class="ok">Thank you for subscribing. Welcome to the Zoni family.</span>';f.reset();}
-  else if(f.id==="reviewForm"){submitReview(f);}
-  else if(f.id==="checkoutForm"){placeOrder(f);}
-  else if(f.id==="trackForm"){doTrack(($("#trackInput").value||"").trim());}
- });
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
-}
-function submitReview(f){
- if(!state.current) return;
- const name=f.querySelector("[name=rname]").value.trim();
- const rating=Number(f.querySelector("[name=rrating]").value);
- const text=f.querySelector("[name=rtext]").value.trim();
- if(!name||!text){toast("Please add your name and a short review.");return;}
- state.current.reviews.unshift({name:name,city:"Rahim Yar Khan",rating:rating,text:text,date:"Just now"});
- state.current.reviewCount++;
- renderReviews(state.current);
- const rc=$("#productDetail .rc"); if(rc) rc.textContent=state.current.rating+" · "+state.current.reviewCount+" reviews";
- f.reset(); toast("Thank you! Your review is live.");
-}
-function placeOrder(f){
- const g=n=>f.querySelector("[name="+n+"]").value.trim();
- const name=g("cname"),phone=g("cphone"),wa=g("cwhats")||phone,city=g("ccity"),addr=g("caddress"),email=g("cemail");
- const err=$("#ckError");
- if(!name||!phone||!addr){err.textContent="Please fill your full name, phone number and complete address so we can deliver your order.";err.style.display="block";return;}
- err.style.display="none";
- if(!state.cart.length){toast("Your cart is empty.");return;}
- const sub=cartSubtotal(),fee=shipFee(sub);
- const order={orderNumber:"ZB-"+(1000+Math.floor(Math.random()*9000)),customerName:name,customerPhone:phone,whatsapp:wa,address:addr,city:city||"Rahim Yar Khan",email:email,paymentMethod:"Cash on Delivery",items:state.cart.map(l=>{const p=byId(l.id);return {product:{id:p.id,title:p.title,salePrice:p.salePrice,featuredImage:p.featuredImage},quantity:l.qty,selectedVariant:l.size};}),subtotal:sub,shippingFee:fee,total:sub+fee,status:"processing",createdAt:new Date().toISOString()};
- state.orders.unshift(order); saveOrders();
- state.cart=[]; saveCart(); renderCart();
- $("#doneBox").innerHTML='<div class="done-check"><svg viewBox="0 0 24 24" width="38" height="38"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>'+
- '<h2>Thank you, '+esc(name.split(" ")[0])+"!</h2>"+
- '<p class="done-id">Your order number is <strong>'+order.orderNumber+"</strong></p>"+
- '<p>Items: '+order.items.reduce((a,i)=>a+i.quantity,0)+" · Total: <strong>"+money(order.total)+"</strong> · Payment: Cash on Delivery</p>"+
- (email?'<p>A confirmation email has been sent to <strong>'+esc(email)+"</strong>.</p>":"")+
- '<p>Our team will confirm your order on WhatsApp ('+esc(wa)+") shortly, then pack it and hand it to TCS.</p>"+
- '<div class="pd-actions"><button class="btn primary big" data-action="track-placed">Track Your Order</button><button class="btn ghost big" data-action="back-home">Continue Shopping</button></div>';
- const ti=$("#trackInput"); if(ti) ti.value=order.orderNumber;
- f.reset();
- go("done");
+function animateTimeline(box, isDemo){
+  const ol = box.querySelector(".timeline"); if (!ol) return;
+  const doneUpto = isDemo ? 3 : 2;
+  const lis = Array.from(ol.querySelectorAll("li"));
+  lis.forEach((li, i) => { li.style.setProperty("--i", i); });
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    lis.forEach(li => li.classList.add("tl-in"));
+    const prog = ol.querySelector(".tl-progress");
+    const dots = ol.querySelectorAll(".dot");
+    if (prog && dots.length > 1){
+      const idx = Math.min(doneUpto, dots.length - 1);
+      const li0 = lis[0], liI = lis[idx];
+      const y0 = li0.offsetTop + dots[0].offsetTop + dots[0].offsetHeight / 2;
+      const yi = liI.offsetTop + dots[idx].offsetTop + dots[idx].offsetHeight / 2;
+      prog.style.top = y0 + "px";
+      prog.style.height = Math.max(0, yi - y0) + "px";
+    }
+  }));
 }
 function doTrack(id){
- const box=$("#trackResult");
- if(!id){box.innerHTML='<p class="demo-note">Please enter your order number, for example the one from your confirmation (ZB-1234).</p>';return;}
- const order=state.orders.find(o=>o.orderNumber.toUpperCase()===id.toUpperCase());
- if(order){box.innerHTML=timelineHTML(order,false);}
- else{box.innerHTML=timelineHTML(null,true);}
+  const box = $("#trackResult"); if (!box) return;
+  const clean = String(id || "").trim().toUpperCase();
+  if (!clean){ box.innerHTML = '<p class="demo-note">Please enter your order number, for example the one from your confirmation (ZB-1234).</p>'; return; }
+  const real = state.lastOrder && state.lastOrder.orderNumber.toUpperCase() === clean;
+  const o = real ? state.lastOrder : Object.assign({}, FALLBACK, { orderNumber: clean });
+  box.innerHTML = timelineHTML(o, !real);
+  animateTimeline(box, !real);
 }
+
+/* ---------- global binding (single delegated listener) ---------- */
+function bindGlobal(){
+  if (document.body.dataset.zoniBound) return;
+  document.body.dataset.zoniBound = "1";
+  document.addEventListener("click", e => {
+    const dropWrap = e.target.closest(".nav-drop");
+    if (!dropWrap) closeDropdown();
+    const drawerLink = e.target.closest("#drawer a");
+    if (drawerLink) closeDrawer();
+    const el = e.target.closest("[data-action]");
+    if (!el) return;
+    const a = el.dataset.action;
+    if (a === "shop-menu"){
+      const m = $("#shopMenu"); if (!m) return;
+      const open = m.classList.toggle("open");
+      el.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    else if (a === "drawer-open") openDrawer();
+    else if (a === "drawer-close") closeDrawer();
+    else if (a === "acc-toggle"){
+      const panel = $("#accPanel"); if (!panel) return;
+      const open = panel.classList.toggle("open");
+      el.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    else if (a === "age"){ state.age = el.dataset.age; renderAgeTiles(); renderGrid(false); }
+    else if (a === "cat"){ state.cat = el.dataset.cat; renderChips(); renderGrid(false); }
+    else if (a === "add"){
+      e.preventDefault(); e.stopPropagation();
+      const card = el.closest(".card");
+      addWithFly(card ? card.querySelector("img") : null, Number(el.dataset.id), defaultSize(byId(Number(el.dataset.id))), 1);
+    }
+    else if (a === "open"){
+      if (e.target.closest("a") || e.target.closest("button")) return;
+      location.href = P_PROD + "?id=" + el.dataset.id;
+    }
+    else if (a === "size"){
+      state.size = el.dataset.size;
+      $$("#pdSizes .size-pill").forEach(b => b.classList.toggle("active", b.dataset.size === state.size));
+    }
+    else if (a === "qty-inc"){ state.qty++; const q = $("#pdQty"); if (q) q.textContent = state.qty; }
+    else if (a === "qty-dec"){ state.qty = Math.max(1, state.qty - 1); const q = $("#pdQty"); if (q) q.textContent = state.qty; }
+    else if (a === "add-current"){ addWithFly($("#pdImg"), state.current.id, state.size, state.qty); }
+    else if (a === "line-inc" || a === "line-dec"){ const row = el.closest(".cline"); if (row) changeLine(row.dataset.key, a === "line-inc" ? 1 : -1, el); }
+    else if (a === "line-remove"){ const row = el.closest(".cline"); if (row) removeLine(row.dataset.key, el); }
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeDropdown(); closeDrawer(); } });
+  document.addEventListener("input", e => { if (e.target && e.target.id === "searchInput"){ state.q = e.target.value; renderGrid(false); } });
+  document.addEventListener("submit", e => {
+    const f = e.target;
+    if (f.id === "newsletterForm"){
+      e.preventDefault();
+      const em = f.querySelector("input[type=email]");
+      const msg = $("#newsMsg");
+      if (!em || !em.value.trim()) return;
+      if (msg) msg.innerHTML = '<span class="ok">Thank you for subscribing. Welcome to the Zoni family.</span>';
+      f.reset();
+    }
+    else if (f.id === "reviewForm"){
+      e.preventDefault();
+      const p = state.current; if (!p) return;
+      const name = f.rvname.value.trim(), city = f.rvcity.value.trim(), text = f.rvtext.value.trim();
+      if (!name || !text){ toast("Please add your name and a short review."); return; }
+      p.reviews.unshift({ name:name, city:city || "Rahim Yar Khan", rating:Number(f.rvrating.value), text:text, date:"Just now" });
+      p.reviewCount++;
+      const rl = $("#reviewsList"); if (rl) rl.innerHTML = p.reviews.map(reviewHTML).join("");
+      const rc = $("#productDetail .rc"); if (rc) rc.textContent = p.rating.toFixed(1) + " · " + p.reviewCount + " reviews";
+      f.reset(); toast("Thank you! Your review is live.");
+    }
+    else if (f.id === "checkoutForm"){ e.preventDefault(); placeOrder(f); }
+    else if (f.id === "trackForm"){ e.preventDefault(); doTrack($("#trackInput").value); }
+  });
+}
+
 /* ---------- init ---------- */
-function renderCats(){
- $("#catChips").innerHTML=CATEGORIES.map(c=>'<button class="chip'+(c===state.cat?" active":"")+'" data-action="cat" data-cat="'+esc(c)+'">'+esc(c)+"</button>").join("");
- $("#ageTiles").innerHTML=AGES.map(a=>'<button class="age-tile" data-action="age" data-age="'+a+'"><span class="age-num">'+a+'</span><span class="age-lab">Years</span></button>').join("");
- const fl=$("#footCats"); if(fl) fl.innerHTML=CATEGORIES.slice(1).map(c=>'<li><a href="#shop" data-action="cat-link" data-cat="'+esc(c)+'">'+esc(c)+"</a></li>").join("");
-}
-document.addEventListener("DOMContentLoaded",()=>{renderCats();renderGrid();renderTestimonials();renderCart();bind();});
+document.addEventListener("DOMContentLoaded", () => {
+  bindGlobal();
+  renderBadge(); renderFootCats();
+  if (PAGE === "home" || PAGE === "shop") initShopSection();
+  if (PAGE === "home") renderTestimonials();
+  if (PAGE === "product") initProduct();
+  if (PAGE === "cart") renderCartPage();
+  if (PAGE === "checkout") renderCkSummary();
+  if (PAGE === "track"){ const inp = $("#trackInput"); if (inp && state.lastOrder) inp.value = state.lastOrder.orderNumber; }
+  armReveal(document);
+  requestAnimationFrame(() => requestAnimationFrame(sweepReveal));
+  setTimeout(() => { $$(".rv:not(.in)").forEach(doReveal); }, 1800);
+});
 
 </script>
 </body>
