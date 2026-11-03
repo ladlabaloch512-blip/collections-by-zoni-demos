@@ -338,6 +338,46 @@ a.drop-item{box-sizing:border-box}
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .kbwrap{animation:kenburns 9s ease-in-out infinite alternate}
 
+/* ===== Round 4: hero slider + restructured home (featured / categories / perks) ===== */
+/* Slider: slides stack naturally with JS off (first slide fully visible);
+   hiding happens ONLY under .slider-on, a class the script itself adds. */
+.slider{position:relative;overflow:hidden}
+.slides{position:relative}
+.slider .slide{position:relative}
+.sl-arrow,.sl-dots{display:none}
+.slider-on .slide{position:absolute;top:0;left:0;width:100%;opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s;pointer-events:none}
+.slider-on .slide.active{position:relative;opacity:1;visibility:visible;transform:none;transition:opacity .6s ease,transform .6s ease;pointer-events:auto;z-index:1}
+.slider-on .sl-arrow{display:flex;align-items:center;justify-content:center;position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:0 8px 20px rgba(230,76,63,.25);cursor:pointer}
+.slider-on .sl-arrow svg{fill:#E64C3F}
+.slider-on .sl-arrow.prev{left:14px}
+.slider-on .sl-arrow.next{right:14px}
+.slider-on .sl-dots{display:flex;gap:8px;position:absolute;left:50%;transform:translateX(-50%);bottom:14px;z-index:6}
+.sl-dot{width:10px;height:10px;border-radius:999px;border:2px solid #FF6B5E;background:#fff;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease}
+.sl-dot.active{background:#FF6B5E;width:26px}
+.slider .hero-photo{border-radius:28px;overflow:hidden;box-shadow:0 18px 40px rgba(230,76,63,.22)}
+.slider .hero-photo img{box-shadow:none}
+/* Perks strip */
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding-bottom:16px}
+.perk{display:flex;gap:13px;background:#fff;border-radius:18px;box-shadow:0 6px 20px rgba(45,49,66,.08);padding:18px}
+.perk-ic{width:46px;height:46px;border-radius:50%;background:#FFF1EC;display:flex;align-items:center;justify-content:center;flex:none}
+.perk-ic svg{fill:#E64C3F}
+.perk b{font-size:16px;color:#2D3142}
+.perk p{color:#5A5E73;font-size:14px;margin-top:3px;line-height:1.5;font-weight:600}
+/* Featured + view all */
+.view-all-row{text-align:center;margin:24px 0 12px}
+/* Category showcase: photo cards row */
+.cat-show{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;padding-bottom:16px}
+.cat-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 20px rgba(45,49,66,.08);text-decoration:none;color:inherit;display:block;transition:transform .18s ease,box-shadow .18s ease}
+.cat-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(45,49,66,.14)}
+.cat-img{display:block}
+.cat-img img{width:100%;height:150px;object-fit:cover}
+.cat-meta{display:flex;flex-direction:column;padding:13px 15px 2px}
+.cat-name{font-weight:700;font-size:16.5px;color:#2D3142}
+.cat-count{color:#FF8A5B;font-weight:700;font-size:13.5px;margin-top:2px}
+.cat-arrow{display:flex;justify-content:flex-end;padding:0 12px 12px}
+.cat-arrow svg{fill:#E64C3F}
+@media(max-width:560px){.slider-on .sl-arrow{width:36px;height:36px}.slider-on .sl-arrow.prev{left:8px}.slider-on .sl-arrow.next{right:8px}}
+
 </style>
 </head>
 <body data-page="shop">
@@ -623,10 +663,10 @@ function filtered(){
     (state.age === "all" || p.ages.indexOf(state.age) >= 0) &&
     (!q || p.title.toLowerCase().indexOf(q) >= 0 || p.category.toLowerCase().indexOf(q) >= 0));
 }
-function cardHTML(p, withRv){
+function cardHTML(p, withRv, extra){
   const off = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice / p.regularPrice) * 100) : 0;
   const band = CATBAND[p.category] || BAND_COLORS[(p.id - 1) % BAND_COLORS.length];
-  return '<article class="card' + (withRv ? " rv" : "") + '" data-action="open" data-id="' + p.id + '">' +
+  return '<article class="card' + (withRv ? " rv" : "") + (extra || "") + '" data-action="open" data-id="' + p.id + '">' +
     (DESIGN === 4 ? '<div class="card-band" style="background:' + band + '"></div>' : "") +
     '<a class="card-imglink" href="' + P_PROD + "?id=" + p.id + '"><span class="card-img"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '" loading="lazy">' + (off ? '<span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</span></a>" +
     '<div class="card-body"><span class="card-cat">' + esc(p.category) + "</span>" +
@@ -661,6 +701,62 @@ function initShopSection(){
   const si = $("#searchInput"); if (si && state.q) si.value = state.q;
   renderAgeTiles(); renderChips(); renderGrid(true);
   if (location.hash === "#searchInput" && si) setTimeout(() => { try { si.focus({ preventScroll:true }); } catch (e) { si.focus(); } }, 60);
+}
+/* ---------- home: featured products (first 2 of each category, catalog order) ---------- */
+const FEATURED_IDS = (() => { const seen = {}; const out = []; PRODUCTS.forEach(p => { const n = (seen[p.category] || 0) + 1; seen[p.category] = n; if (n <= 2) out.push(p.id); }); return out; })();
+function renderFeatured(){
+  const box = $("#featGrid"); if (!box) return;
+  box.innerHTML = FEATURED_IDS.map((id, i) => cardHTML(byId(id), true, (DESIGN === 3 && i === 0) ? " span2" : "")).join("");
+  armReveal(box);
+}
+/* ---------- home: shop-by-category showcase (photo + name + count per category) ---------- */
+const CAT_ARROW = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>';
+function renderCatShowcase(){
+  const box = $("#catShowcase"); if (!box) return;
+  box.innerHTML = SHOP_CATS.map(c => {
+    const first = PRODUCTS.find(p => p.category === c);
+    const n = PRODUCTS.filter(p => p.category === c).length;
+    return '<a class="cat-card rv" href="' + P_SHOP + "?cat=" + encodeURIComponent(c) + '">' +
+      '<span class="cat-img"><img src="' + first.featuredImage + '" alt="' + esc(c) + '" loading="lazy"></span>' +
+      '<span class="cat-meta"><span class="cat-name">' + esc(c) + '</span><span class="cat-count">' + n + (n === 1 ? " Product" : " Products") + "</span></span>" +
+      '<span class="cat-arrow" aria-hidden="true">' + CAT_ARROW + "</span></a>";
+  }).join("");
+  armReveal(box);
+}
+/* ---------- home: hero slider (auto-advance, dots, arrows, swipe; NO reduced-motion gating) ---------- */
+let slTimer = null, slIdx = 0;
+function sliderGo(i){
+  const hero = document.querySelector(".slider"); if (!hero) return;
+  const slides = hero.querySelectorAll(".slide"); if (!slides.length) return;
+  slIdx = ((i % slides.length) + slides.length) % slides.length;
+  slides.forEach((s, j) => s.classList.toggle("active", j === slIdx));
+  hero.querySelectorAll(".sl-dot").forEach((dt, j) => dt.classList.toggle("active", j === slIdx));
+}
+function sliderRestart(){
+  if (slTimer) clearInterval(slTimer);
+  slTimer = setInterval(() => sliderGo(slIdx + 1), 4500);
+}
+function sliderStop(){ if (slTimer){ clearInterval(slTimer); slTimer = null; } }
+function initSlider(){
+  const hero = document.querySelector(".slider"); if (!hero) return;
+  if (hero.querySelectorAll(".slide").length < 2) return;
+  hero.classList.add("slider-on");
+  sliderGo(0); sliderRestart();
+  /* pause on hover ONLY for hover-capable fine pointers — touch is never trapped */
+  let mq = null;
+  try { mq = window.matchMedia("(hover: hover) and (pointer: fine)"); } catch (e) {}
+  if (mq && mq.matches){
+    hero.addEventListener("mouseenter", sliderStop);
+    hero.addEventListener("mouseleave", sliderRestart);
+  }
+  let tx = null;
+  hero.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive:true });
+  hero.addEventListener("touchend", e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 42){ sliderGo(slIdx + (dx < 0 ? 1 : -1)); sliderRestart(); }
+  }, { passive:true });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) sliderStop(); else sliderRestart(); });
 }
 function renderTestimonials(){
   const box = $("#testimonials"); if (!box) return;
@@ -864,7 +960,15 @@ function bindGlobal(){
       const open = panel.classList.toggle("open");
       el.setAttribute("aria-expanded", open ? "true" : "false");
     }
+    else if (a === "sl-prev"){ sliderGo(slIdx - 1); sliderRestart(); }
+    else if (a === "sl-next"){ sliderGo(slIdx + 1); sliderRestart(); }
+    else if (a === "sl-dot"){ sliderGo(Number(el.dataset.i || 0)); sliderRestart(); }
+    else if (a === "rail-prev"){ const r = $("#featGrid"); if (r) r.scrollBy({ left:-340, behavior:"smooth" }); }
+    else if (a === "rail-next"){ const r = $("#featGrid"); if (r) r.scrollBy({ left:340, behavior:"smooth" }); }
     else if (a === "age"){
+      /* On the HOME page the age tiles are navigation: they land on the shop
+         page with the age filter applied (the full catalog lives there). */
+      if (PAGE === "home"){ location.href = P_SHOP + (el.dataset.age === "all" ? "" : "?age=" + encodeURIComponent(el.dataset.age)); return; }
       state.age = el.dataset.age; renderAgeTiles(); renderGrid(false);
       /* On shop pages the age tiles sit BELOW the grid: after filtering,
          smoothly bring the grid back into view so the result is seen. */
@@ -923,8 +1027,8 @@ function bindGlobal(){
 document.addEventListener("DOMContentLoaded", () => {
   bindGlobal();
   renderBadge(); renderFootCats();
-  if (PAGE === "home" || PAGE === "shop") initShopSection();
-  if (PAGE === "home") renderTestimonials();
+  if (PAGE === "shop") initShopSection();
+  if (PAGE === "home"){ renderAgeTiles(); renderFeatured(); renderCatShowcase(); renderTestimonials(); initSlider(); }
   if (PAGE === "product") initProduct();
   if (PAGE === "cart") renderCartPage();
   if (PAGE === "checkout") renderCkSummary();

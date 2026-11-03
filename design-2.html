@@ -341,6 +341,55 @@ a.drop-item{box-sizing:border-box}
 .age-tile:nth-child(6){background:#E2F2F0}
 .age-tile:nth-child(7){background:#F9EDF1}
 
+/* ===== Round 4: hero slider + restructured home (featured / categories / perks) ===== */
+/* Slides stack naturally with JS off; hiding happens ONLY under .slider-on. */
+.slider{position:relative;overflow:hidden}
+.slides{position:relative}
+.slider .slide{position:relative}
+.sl-arrow,.sl-dots{display:none}
+.slider-on .slide{position:absolute;top:0;left:0;width:100%;opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s;pointer-events:none}
+.slider-on .slide.active{position:relative;opacity:1;visibility:visible;transform:none;transition:opacity .6s ease,transform .6s ease;pointer-events:auto;z-index:1}
+.slider-on .sl-arrow{display:flex;align-items:center;justify-content:center;position:absolute;top:42%;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid #EBCBD6;background:#fff;cursor:pointer}
+.slider-on .sl-arrow svg{fill:#B08A97}
+.slider-on .sl-arrow.prev{left:16px}
+.slider-on .sl-arrow.next{right:16px}
+.slider-on .sl-dots{display:flex;gap:8px;position:absolute;left:50%;transform:translateX(-50%);bottom:14px;z-index:6}
+.sl-dot{width:10px;height:10px;border-radius:999px;border:1.5px solid #E79FB4;background:#fff;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease}
+.sl-dot.active{background:#E79FB4;width:26px}
+/* Centered slider: one wide photo below the text */
+.hero-wide{max-width:980px;margin:6px auto 0;padding:0 20px 48px}
+.hero-wide img{width:100%;height:350px;object-fit:cover;display:block}
+/* Perks strip */
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding-bottom:16px}
+.perk{display:flex;gap:13px;background:#fff;border:1px solid #EFE6E9;padding:20px}
+.perk-ic{width:46px;height:46px;background:#F9EDF1;display:flex;align-items:center;justify-content:center;flex:none}
+.perk-ic svg{fill:#B08A97}
+.perk b{font-size:16px;color:#3E363A;font-weight:600}
+.perk p{color:#7A6E73;font-size:14px;margin-top:3px;line-height:1.55;font-weight:300}
+/* Featured: large 2-col boutique cards */
+.feat-lg{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-bottom:16px}
+.feat-lg .card-img img{height:330px;object-position:50% 22%}
+.view-all-row{text-align:center;margin:24px 0 12px}
+/* Category showcase: large soft 2-col tiles (5th spans full width) */
+.cat-show{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:16px}
+.cat-card{background:#fff;border:1px solid #EFE6E9;text-decoration:none;color:inherit;display:block;transition:transform .18s ease,border-color .18s ease}
+.cat-card:hover{transform:translateY(-4px);border-color:#E3B7C5}
+.cat-card:last-child{grid-column:1/-1}
+.cat-img{display:block;overflow:hidden}
+.cat-img img{width:100%;height:200px;object-fit:cover}
+.cat-card:last-child .cat-img img{height:170px}
+.cat-meta{display:flex;flex-direction:column;padding:16px 18px 4px}
+.cat-name{font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:#3E363A}
+.cat-count{color:#B08A97;font-weight:500;font-size:13.5px;margin-top:2px;letter-spacing:.4px}
+.cat-arrow{display:flex;justify-content:flex-end;padding:0 14px 14px}
+.cat-arrow svg{fill:#B08A97}
+/* Shop by Age as a pill band */
+.age-pills .age-row{gap:10px}
+.age-pills .age-tile{flex-direction:row;align-items:center;gap:8px;border-radius:999px;padding:13px 24px}
+.age-pills .age-tile .age-num{font-size:19px}
+.age-pills .age-tile .age-lab{font-size:12px;letter-spacing:1.5px}
+@media(max-width:700px){.feat-lg{grid-template-columns:1fr}.feat-lg .card-img img{height:260px}.cat-show{grid-template-columns:1fr}.hero-wide img{height:230px}.slider-on .sl-arrow{width:36px;height:36px;top:auto;bottom:64px}.slider-on .sl-arrow.prev{left:10px}.slider-on .sl-arrow.next{right:10px}}
+
 </style>
 </head>
 <body data-page="home">
@@ -374,25 +423,34 @@ a.drop-item{box-sizing:border-box}
 <div class="drawer-note">WhatsApp: <a href="https://wa.me/923416008008" target="_blank" rel="noopener">0341 600 8008</a><br>Cash on Delivery all over Pakistan</div>
 </aside>
 <main>
-<header class="hero"><div class="hero-in">
-<span class="hero-eyebrow rv">The Boutique Collection</span>
-<h1 class="rv">Beautiful clothing for your <span class="accent">little treasures</span></h1>
-<p class="hero-sub rv">Soft fabrics, gentle colours and careful stitching — a boutique collection for children from 1 to 14 years, made in Rahim Yar Khan and delivered across Pakistan.</p>
-<div class="hero-ctas rv"><a class="btn primary big" href="shop-2.html">Shop Now</a><a class="btn ghost big" href="track-2.html">Track Order</a></div><div class="stats rv"><div class="stat"><b>500+</b> Happy Families</div><div class="stat">Cash on Delivery</div><div class="stat"><b>7-Day</b> Easy Exchange</div><div class="stat">Delivery All Over Pakistan</div></div></div>
-<div class="hero-sides rv"><span class="hs-frame"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p02.jpg" alt="Child wearing a black fur-collar jacket set from Collection's by Zoni"></span><span class="hs-frame"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p01.jpg" alt="Child wearing a BOLD sweatshirt and white cargo set from Collection's by Zoni"></span></div>
-</header>
-<section class="section"><div class="wrap">
+<header class="hero slider" data-sec="hero"><div class="slides"><div class="slide"><div class="hero-in"><span class="hero-eyebrow">The Boutique Collection</span>
+<h1>Track suits made for <span class="accent">all-day play</span></h1>
+<p class="hero-sub">Soft two-piece track suits in sizes 1 to 14 years — our most-loved styles from the Facebook page.</p>
+<div class="hero-ctas"><a class="btn primary big" href="shop-2.html?cat=Track%20Suits">Shop Track Suits</a><a class="btn ghost big" href="shop-2.html">Shop All</a></div></div><div class="hero-wide"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p12.jpg" alt="Child wearing the 88 West Side hoodie track suit"></div></div><div class="slide"><div class="hero-in"><span class="hero-eyebrow">The Boutique Collection</span>
+<h1>Denim sets, <span class="accent">smart</span> and sturdy</h1>
+<p class="hero-sub">Denim jackets and jeans sets that keep up with busy kids — smart enough for outings, tough enough for play.</p>
+<div class="hero-ctas"><a class="btn primary big" href="shop-2.html?cat=Denim%20Sets">Shop Denim Sets</a><a class="btn ghost big" href="shop-2.html">Shop All</a></div></div><div class="hero-wide"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p03.jpg" alt="Child wearing a denim jacket and wide-leg jeans set"></div></div><div class="slide"><div class="hero-in"><span class="hero-eyebrow">The Boutique Collection</span>
+<h1>Warm layers for <span class="accent">chilly days</span></h1>
+<p class="hero-sub">Snug winter sets with soft collars and cosy fits — warm hugs for cold mornings.</p>
+<div class="hero-ctas"><a class="btn primary big" href="shop-2.html?cat=Winter%20Sets">Shop Winter Sets</a><a class="btn ghost big" href="shop-2.html">Shop All</a></div></div><div class="hero-wide"><img class="kb" src="https://collections-by-zoni.surge.sh/products/p02.jpg" alt="Child wearing a black fur-collar jacket set"></div></div></div><button class="sl-arrow prev" data-action="sl-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button><button class="sl-arrow next" data-action="sl-next" aria-label="Next slide"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button><div class="sl-dots"><button class="sl-dot" data-action="sl-dot" data-i="0" aria-label="Go to slide 1"></button><button class="sl-dot" data-action="sl-dot" data-i="1" aria-label="Go to slide 2"></button><button class="sl-dot" data-action="sl-dot" data-i="2" aria-label="Go to slide 3"></button></div></header>
+<section class="section cats-sec" data-sec="cats"><div class="wrap">
+<div class="sec-head rv"><h2>Shop by Category</h2><p>Five little collections — tap one to see everything inside it.</p></div>
+<div class="cat-show" id="catShowcase"></div>
+</div></section>
+<section class="section feat-sec" data-sec="featured"><div class="wrap">
+<div class="sec-head rv"><h2>Featured Products</h2><p>Hand-picked favourites from our Facebook collection — two from every category.</p></div>
+<div class="feat-lg" id="featGrid"></div>
+<div class="view-all-row rv"><a class="btn primary big view-all" href="shop-2.html">View All Products</a></div>
+</div></section>
+<section class="section age-pills" data-sec="age"><div class="wrap">
 <div class="sec-head rv"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
 <div class="age-row rv" id="ageTiles"></div>
 </div></section>
-<section class="section" id="shop"><div class="wrap">
-<div class="sec-head rv"><h2>Shop the Collection</h2><p>Real styles from our Facebook page — prices shown are samples for this demo.</p></div>
-<div class="search-box shop-search rv"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="searchInput" type="search" placeholder="Search track suits, denim sets, shirts..." aria-label="Search products"></div>
-<div class="chips rv" id="catChips"></div>
-<div class="res-count" id="resCount"></div>
-<div class="grid" id="grid"></div>
+<section class="section perks-sec" data-sec="perks"><div class="wrap">
+<div class="sec-head rv"><h2>Why Families Choose Zoni</h2><p>Honest prices, careful packing and delivery all over Pakistan.</p></div>
+<div class="perks"><div class="perk rv"><span class="perk-ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M21 7H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm-9 8.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5zM4.5 9.8A2.3 2.3 0 0 1 6.8 12a2.3 2.3 0 0 1-2.3 2.2zm15 4.4a2.3 2.3 0 0 1-2.3-2.2 2.3 2.3 0 0 1 2.3-2.3z"/></svg></span><div><b>Cash on Delivery</b><p>Pay at your doorstep — no card or advance payment needed.</p></div></div><div class="perk rv"><span class="perk-ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M7.5 4L3 8.5 7.5 13V10h9.2a3.3 3.3 0 0 1 3.3 3.3V18h2.5v-4.7A5.8 5.8 0 0 0 16.7 7.5H7.5zM16.5 20l4.5-4.5L16.5 11v3H7.3a3.3 3.3 0 0 1-3.3-3.3V6H1.5v4.7A5.8 5.8 0 0 0 7.3 16.5h9.2z" transform="translate(0.75 0) scale(0.94)"/></svg></span><div><b>7-Day Easy Exchange</b><p>Wrong size? Exchange it within 7 days, no fuss.</p></div></div><div class="perk rv"><span class="perk-ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M21.6 9.3l-3-3.6A2 2 0 0 0 17.1 5H14v3h3.2l2.2 2.6H14v2.9h-1.6a3.4 3.4 0 0 1-6.2 0H3V6h11V4H2a1 1 0 0 0-1 1v10h1.4a4.9 4.9 0 0 0 9.8 0h7.3a4.9 4.9 0 0 0 9.7 0h1.8v-4.2a2 2 0 0 0-.4-.5zM7.4 16.7A1.8 1.8 0 1 1 9.2 14.9a1.8 1.8 0 0 1-1.8 1.8zm8.7-1.8a1.8 1.8 0 1 1-1.8 1.8 1.8 1.8 0 0 1 1.8-1.8z" transform="scale(0.96)"/></svg></span><div><b>Fast Nationwide Delivery</b><p>TCS delivery in 2 to 4 working days, all over Pakistan.</p></div></div><div class="perk rv"><span class="perk-ic"><svg viewBox="0 0 24 24" width="29" height="29" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span><div><b>WhatsApp Support</b><p>Real help from our team on 0341 600 8008, 7 days a week.</p></div></div></div>
 </div></section>
-<section class="section"><div class="wrap">
+<section class="section" data-sec="testimonials"><div class="wrap">
 <div class="testi rv"><h2>Loved by Families</h2><div class="testi-grid" id="testimonials"></div></div>
 </div></section>
 </main>
@@ -635,10 +693,10 @@ function filtered(){
     (state.age === "all" || p.ages.indexOf(state.age) >= 0) &&
     (!q || p.title.toLowerCase().indexOf(q) >= 0 || p.category.toLowerCase().indexOf(q) >= 0));
 }
-function cardHTML(p, withRv){
+function cardHTML(p, withRv, extra){
   const off = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice / p.regularPrice) * 100) : 0;
   const band = CATBAND[p.category] || BAND_COLORS[(p.id - 1) % BAND_COLORS.length];
-  return '<article class="card' + (withRv ? " rv" : "") + '" data-action="open" data-id="' + p.id + '">' +
+  return '<article class="card' + (withRv ? " rv" : "") + (extra || "") + '" data-action="open" data-id="' + p.id + '">' +
     (DESIGN === 4 ? '<div class="card-band" style="background:' + band + '"></div>' : "") +
     '<a class="card-imglink" href="' + P_PROD + "?id=" + p.id + '"><span class="card-img"><img src="' + p.featuredImage + '" alt="' + esc(p.title) + '" loading="lazy">' + (off ? '<span class="sale-badge">SAVE ' + off + "%</span>" : "") + "</span></a>" +
     '<div class="card-body"><span class="card-cat">' + esc(p.category) + "</span>" +
@@ -673,6 +731,62 @@ function initShopSection(){
   const si = $("#searchInput"); if (si && state.q) si.value = state.q;
   renderAgeTiles(); renderChips(); renderGrid(true);
   if (location.hash === "#searchInput" && si) setTimeout(() => { try { si.focus({ preventScroll:true }); } catch (e) { si.focus(); } }, 60);
+}
+/* ---------- home: featured products (first 2 of each category, catalog order) ---------- */
+const FEATURED_IDS = (() => { const seen = {}; const out = []; PRODUCTS.forEach(p => { const n = (seen[p.category] || 0) + 1; seen[p.category] = n; if (n <= 2) out.push(p.id); }); return out; })();
+function renderFeatured(){
+  const box = $("#featGrid"); if (!box) return;
+  box.innerHTML = FEATURED_IDS.map((id, i) => cardHTML(byId(id), true, (DESIGN === 3 && i === 0) ? " span2" : "")).join("");
+  armReveal(box);
+}
+/* ---------- home: shop-by-category showcase (photo + name + count per category) ---------- */
+const CAT_ARROW = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>';
+function renderCatShowcase(){
+  const box = $("#catShowcase"); if (!box) return;
+  box.innerHTML = SHOP_CATS.map(c => {
+    const first = PRODUCTS.find(p => p.category === c);
+    const n = PRODUCTS.filter(p => p.category === c).length;
+    return '<a class="cat-card rv" href="' + P_SHOP + "?cat=" + encodeURIComponent(c) + '">' +
+      '<span class="cat-img"><img src="' + first.featuredImage + '" alt="' + esc(c) + '" loading="lazy"></span>' +
+      '<span class="cat-meta"><span class="cat-name">' + esc(c) + '</span><span class="cat-count">' + n + (n === 1 ? " Product" : " Products") + "</span></span>" +
+      '<span class="cat-arrow" aria-hidden="true">' + CAT_ARROW + "</span></a>";
+  }).join("");
+  armReveal(box);
+}
+/* ---------- home: hero slider (auto-advance, dots, arrows, swipe; NO reduced-motion gating) ---------- */
+let slTimer = null, slIdx = 0;
+function sliderGo(i){
+  const hero = document.querySelector(".slider"); if (!hero) return;
+  const slides = hero.querySelectorAll(".slide"); if (!slides.length) return;
+  slIdx = ((i % slides.length) + slides.length) % slides.length;
+  slides.forEach((s, j) => s.classList.toggle("active", j === slIdx));
+  hero.querySelectorAll(".sl-dot").forEach((dt, j) => dt.classList.toggle("active", j === slIdx));
+}
+function sliderRestart(){
+  if (slTimer) clearInterval(slTimer);
+  slTimer = setInterval(() => sliderGo(slIdx + 1), 4500);
+}
+function sliderStop(){ if (slTimer){ clearInterval(slTimer); slTimer = null; } }
+function initSlider(){
+  const hero = document.querySelector(".slider"); if (!hero) return;
+  if (hero.querySelectorAll(".slide").length < 2) return;
+  hero.classList.add("slider-on");
+  sliderGo(0); sliderRestart();
+  /* pause on hover ONLY for hover-capable fine pointers — touch is never trapped */
+  let mq = null;
+  try { mq = window.matchMedia("(hover: hover) and (pointer: fine)"); } catch (e) {}
+  if (mq && mq.matches){
+    hero.addEventListener("mouseenter", sliderStop);
+    hero.addEventListener("mouseleave", sliderRestart);
+  }
+  let tx = null;
+  hero.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive:true });
+  hero.addEventListener("touchend", e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 42){ sliderGo(slIdx + (dx < 0 ? 1 : -1)); sliderRestart(); }
+  }, { passive:true });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) sliderStop(); else sliderRestart(); });
 }
 function renderTestimonials(){
   const box = $("#testimonials"); if (!box) return;
@@ -876,7 +990,15 @@ function bindGlobal(){
       const open = panel.classList.toggle("open");
       el.setAttribute("aria-expanded", open ? "true" : "false");
     }
+    else if (a === "sl-prev"){ sliderGo(slIdx - 1); sliderRestart(); }
+    else if (a === "sl-next"){ sliderGo(slIdx + 1); sliderRestart(); }
+    else if (a === "sl-dot"){ sliderGo(Number(el.dataset.i || 0)); sliderRestart(); }
+    else if (a === "rail-prev"){ const r = $("#featGrid"); if (r) r.scrollBy({ left:-340, behavior:"smooth" }); }
+    else if (a === "rail-next"){ const r = $("#featGrid"); if (r) r.scrollBy({ left:340, behavior:"smooth" }); }
     else if (a === "age"){
+      /* On the HOME page the age tiles are navigation: they land on the shop
+         page with the age filter applied (the full catalog lives there). */
+      if (PAGE === "home"){ location.href = P_SHOP + (el.dataset.age === "all" ? "" : "?age=" + encodeURIComponent(el.dataset.age)); return; }
       state.age = el.dataset.age; renderAgeTiles(); renderGrid(false);
       /* On shop pages the age tiles sit BELOW the grid: after filtering,
          smoothly bring the grid back into view so the result is seen. */
@@ -935,8 +1057,8 @@ function bindGlobal(){
 document.addEventListener("DOMContentLoaded", () => {
   bindGlobal();
   renderBadge(); renderFootCats();
-  if (PAGE === "home" || PAGE === "shop") initShopSection();
-  if (PAGE === "home") renderTestimonials();
+  if (PAGE === "shop") initShopSection();
+  if (PAGE === "home"){ renderAgeTiles(); renderFeatured(); renderCatShowcase(); renderTestimonials(); initSlider(); }
   if (PAGE === "product") initProduct();
   if (PAGE === "cart") renderCartPage();
   if (PAGE === "checkout") renderCkSummary();
