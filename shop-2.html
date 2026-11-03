@@ -375,16 +375,16 @@ a.drop-item{box-sizing:border-box}
 </aside>
 <main>
 <div class="wrap"><div class="page-head rv"><h2>Shop</h2><p>All 24 styles from our Facebook collection — filter by age or category, or search.</p></div></div>
-<section class="section"><div class="wrap">
-<div class="sec-head rv"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
-<div class="age-row rv" id="ageTiles"></div>
-</div></section>
 <section class="section" id="shop"><div class="wrap">
 <div class="sec-head rv"><h2>Shop the Collection</h2><p>Real styles from our Facebook page — prices shown are samples for this demo.</p></div>
 <div class="search-box shop-search rv"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="searchInput" type="search" placeholder="Search track suits, denim sets, shirts..." aria-label="Search products"></div>
 <div class="chips rv" id="catChips"></div>
 <div class="res-count" id="resCount"></div>
 <div class="grid" id="grid"></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="sec-head rv"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
+<div class="age-row rv" id="ageTiles"></div>
 </div></section>
 </main>
 <footer id="contact"><div class="wrap">
@@ -556,7 +556,60 @@ function addWithFly(img, id, size, qty){
 }
 
 /* ---------- header / drawer / footer ---------- */
-function closeDropdown(){ const m = $("#shopMenu"); if (m) m.classList.remove("open"); const b = $("#shopToggle"); if (b) b.setAttribute("aria-expanded", "false"); }
+/* Shop dropdown: click pins it open/closed; on hover-capable devices only
+   (hover:hover + pointer:fine, checked via matchMedia) plain hovering the
+   .nav-drop wrapper ALSO opens the same panel via the same .open class, so
+   the existing fade + translateY + item-stagger CSS animation is reused.
+   The panel lives inside the wrapper, so wrapper + panel are ONE hover
+   zone: moving into the panel never leaves the zone. Leaving the zone
+   closes a hover-opened menu only after a 200ms grace delay (diagonal
+   mouse travel across the 8px gap does not flicker it shut). A click-
+   pinned menu is NOT closed by mouse-leave; a click that closes a pinned
+   menu while the pointer is still over it suppresses hover-reopen until
+   the pointer has fully left the zone, so hover and click never fight. */
+let dropPinned = false, dropHovering = false, dropSuppressed = false, dropCloseTimer = null;
+function dropRender(){
+  const shouldOpen = dropPinned || (dropHovering && !dropSuppressed);
+  const m = $("#shopMenu"); if (m) m.classList.toggle("open", shouldOpen);
+  const b = $("#shopToggle"); if (b) b.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+  return shouldOpen;
+}
+function dropCancelClose(){ if (dropCloseTimer){ clearTimeout(dropCloseTimer); dropCloseTimer = null; } }
+function dropScheduleClose(){
+  dropCancelClose();
+  dropCloseTimer = setTimeout(() => { dropCloseTimer = null; dropRender(); }, 200);
+}
+function closeDropdown(){
+  dropCancelClose(); dropPinned = false; dropHovering = false; dropSuppressed = false;
+  const m = $("#shopMenu"); if (m) m.classList.remove("open");
+  const b = $("#shopToggle"); if (b) b.setAttribute("aria-expanded", "false");
+}
+function toggleDropdown(){
+  dropCancelClose();
+  const isOpen = dropPinned || (dropHovering && !dropSuppressed);
+  if (isOpen && dropPinned){
+    dropPinned = false;
+    if (dropHovering) dropSuppressed = true;
+    dropRender();
+  } else if (isOpen){
+    dropPinned = true; dropRender();
+  } else {
+    dropPinned = true; dropSuppressed = false; dropRender();
+  }
+}
+function bindDropHover(){
+  const wrap = document.querySelector(".nav-drop");
+  if (!wrap || wrap.dataset.hoverBound) return;
+  let mq = null;
+  try { mq = window.matchMedia("(hover: hover) and (pointer: fine)"); } catch (e) {}
+  if (!mq || !mq.matches) return;
+  wrap.dataset.hoverBound = "1";
+  wrap.addEventListener("mouseenter", () => { dropCancelClose(); dropHovering = true; dropRender(); });
+  wrap.addEventListener("mouseleave", () => {
+    dropHovering = false; dropSuppressed = false;
+    if (!dropPinned) dropScheduleClose(); else dropRender();
+  });
+}
 function openDrawer(){ const d = $("#drawer"), bd = $("#drawerBackdrop"); if (d) d.classList.add("open"); if (bd) bd.classList.add("show"); }
 function closeDrawer(){ const d = $("#drawer"), bd = $("#drawerBackdrop"); if (d) d.classList.remove("open"); if (bd) bd.classList.remove("show"); }
 function renderFootCats(){
@@ -804,9 +857,8 @@ function bindGlobal(){
     if (!el) return;
     const a = el.dataset.action;
     if (a === "shop-menu"){
-      const m = $("#shopMenu"); if (!m) return;
-      const open = m.classList.toggle("open");
-      el.setAttribute("aria-expanded", open ? "true" : "false");
+      if (!$("#shopMenu")) return;
+      toggleDropdown();
     }
     else if (a === "drawer-open") openDrawer();
     else if (a === "drawer-close") closeDrawer();
@@ -815,7 +867,12 @@ function bindGlobal(){
       const open = panel.classList.toggle("open");
       el.setAttribute("aria-expanded", open ? "true" : "false");
     }
-    else if (a === "age"){ state.age = el.dataset.age; renderAgeTiles(); renderGrid(false); }
+    else if (a === "age"){
+      state.age = el.dataset.age; renderAgeTiles(); renderGrid(false);
+      /* On shop pages the age tiles sit BELOW the grid: after filtering,
+         smoothly bring the grid back into view so the result is seen. */
+      if (PAGE === "shop"){ const s = $("#shop"); if (s) s.scrollIntoView({ behavior:"smooth", block:"start" }); }
+    }
     else if (a === "cat"){ state.cat = el.dataset.cat; renderChips(); renderGrid(false); }
     else if (a === "add"){
       e.preventDefault(); e.stopPropagation();
@@ -837,6 +894,7 @@ function bindGlobal(){
     else if (a === "line-remove"){ const row = el.closest(".cline"); if (row) removeLine(row.dataset.key, el); }
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeDropdown(); closeDrawer(); } });
+  bindDropHover();
   document.addEventListener("input", e => { if (e.target && e.target.id === "searchInput"){ state.q = e.target.value; renderGrid(false); } });
   document.addEventListener("submit", e => {
     const f = e.target;
