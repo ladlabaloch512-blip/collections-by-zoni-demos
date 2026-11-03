@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collection's by Zoni — Design 3: Bold Blocks (Demo)</title>
+<meta name="description" content="Collection's by Zoni demo store — Bold Blocks design. Little style, big smile. Kids clothing in Rahim Yar Khan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Design 3 — Bold Blocks: Archivo black uppercase + Space Grotesk, sunny yellow #FFC531 + black */
+body{margin:0;font-family:'Space Grotesk',sans-serif;color:#111;background:#fff}
+h1,h2,h3,p,ul,ol,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:#111;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{max-width:1220px;margin:0 auto;padding:0 16px}
+.topbar{background:#111;color:#FFC531;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:10px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.topbar a{color:#FFC531;text-decoration:underline}
+.site-head{position:sticky;top:0;z-index:40;background:#fff;border-bottom:3px solid #111}
+.head-in{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.wordmark{font-family:'Archivo',sans-serif;font-size:25px;font-weight:900;text-transform:uppercase;color:#111;line-height:.95;letter-spacing:-.5px}
+.wordmark span{background:#FFC531;padding:0 7px;box-shadow:3px 3px 0 #111}
+.wordmark small{display:block;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#555;letter-spacing:2.6px;margin-top:5px}
+.search-box{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;background:#fff;border:2.5px solid #111;padding:8px 13px;box-shadow:4px 4px 0 #FFC531}
+.search-box svg{fill:#111;flex:none}
+.search-box input{border:0;background:transparent;outline:0;font-family:inherit;font-size:15px;width:100%;color:#111;font-weight:500}
+.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav-btn{background:transparent;border:0;font-weight:700;font-size:14.5px;text-transform:uppercase;letter-spacing:.6px;color:#111;padding:9px 12px}
+.nav-btn:hover{background:#FFC531}
+.cart-btn{position:relative;background:#111;border:0;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:11px 17px;display:flex;align-items:center;gap:8px;font-size:14px;box-shadow:4px 4px 0 #FFC531}
+.cart-btn svg{fill:#FFC531}
+.badge{background:#FFC531;color:#111;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;padding:0 5px;font-weight:700}
+.hero{position:relative;background-size:cover;background-position:center;border-bottom:3px solid #111}
+.hero-shade{background:rgba(255,255,255,.38)}
+.hero-in{max-width:760px;padding:64px 16px 58px}
+.hero-block{background:#fff;border:3px solid #111;box-shadow:10px 10px 0 #FFC531;padding:30px 32px}
+.hero-eyebrow{display:inline-block;background:#111;color:#FFC531;font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;padding:6px 12px}
+.hero h1{font-family:'Archivo',sans-serif;font-size:52px;line-height:1.02;font-weight:900;text-transform:uppercase;margin:17px 0 13px;letter-spacing:-1px}
+.hero h1 .accent{background:#FFC531;padding:0 10px;box-shadow:4px 4px 0 #111;display:inline-block}
+.hero-sub{font-size:16.5px;color:#333;max-width:520px;line-height:1.55;font-weight:500}
+.hero-ctas{display:flex;gap:13px;margin:24px 0 24px;flex-wrap:wrap}
+.btn{border:2.5px solid #111;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:14.5px;padding:12px 22px;background:#FFC531;color:#111;box-shadow:4px 4px 0 #111;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #111}
+.btn.ghost{background:#fff;color:#111}
+.btn.primary{background:#111;color:#fff;box-shadow:4px 4px 0 #FFC531}
+.btn.big{padding:15px 28px;font-size:16px}
+.btn:disabled{background:#E5E5E5;color:#888;box-shadow:none;transform:none;cursor:not-allowed;border-color:#888}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{background:#111;color:#fff;padding:10px 14px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.stat b{color:#FFC531}
+.section{padding:46px 0 8px}
+.sec-head{margin-bottom:22px}
+.sec-head h2{font-family:'Archivo',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:-.5px}
+.sec-head h2 .accent{background:#FFC531;padding:0 8px}
+.sec-head p{color:#555;margin-top:6px;font-weight:500}
+.age-row{display:flex;gap:13px;flex-wrap:wrap}
+.age-tile{border:2.5px solid #111;background:#fff;box-shadow:5px 5px 0 #111;padding:17px 22px;display:flex;flex-direction:column;align-items:flex-start;gap:0;transition:transform .15s ease}
+.age-tile:hover{transform:translate(-2px,-2px)}
+.age-tile .age-num{font-family:'Archivo',sans-serif;font-size:24px;font-weight:900;line-height:1}
+.age-tile .age-lab{font-size:11.5px;font-weight:700;color:#555;letter-spacing:2px;text-transform:uppercase}
+.age-tile.active{background:#FFC531}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.chip{border:2.5px solid #111;background:#fff;color:#111;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;padding:9px 16px;box-shadow:3px 3px 0 #111}
+.chip.active{background:#111;color:#FFC531}
+.res-count{color:#555;font-size:14px;margin:13px 0 18px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:16px}
+.card{background:#fff;border:2.5px solid #111;box-shadow:7px 7px 0 #111;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;display:flex;flex-direction:column}
+.card:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 #FFC531}
+.card-img{position:relative;border-bottom:2.5px solid #111}
+.card-img img{width:100%;height:250px;object-fit:cover}
+.sale-badge{background:#111;color:#FFC531;font-size:12px;font-weight:700;padding:4px 10px;text-transform:uppercase}
+.card-img .sale-badge{position:absolute;top:0;left:0;background:#FFC531;color:#111;border-right:2.5px solid #111;border-bottom:2.5px solid #111}
+.card-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-cat{font-size:11.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#888}
+.card-title{font-family:'Archivo',sans-serif;font-size:17.5px;font-weight:800;line-height:1.25;text-transform:uppercase}
+.card-rating{display:flex;align-items:center;gap:6px}
+.stars{display:inline-flex;gap:1px}
+.star{fill:#DDD}
+.star.on{fill:#FFB800}
+.rc{font-size:13px;color:#555;font-weight:700}
+.card-foot{display:flex;align-items:center;gap:9px;margin-top:2px}
+.card-price{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px}
+.was{color:#999;text-decoration:line-through;font-size:14px;font-weight:700}
+.add-btn{margin-top:auto;width:100%}
+.empty{grid-column:1/-1;text-align:center;color:#555;padding:34px 10px;font-weight:700}
+.testi{background:#FFC531;border:3px solid #111;box-shadow:9px 9px 0 #111;padding:34px 26px;margin:40px auto 8px}
+.testi h2{font-family:'Archivo',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:20px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.tcard{background:#fff;border:2.5px solid #111;padding:20px}
+.tcard p{margin:10px 0;color:#333;line-height:1.55;font-size:15px;font-weight:500}
+.tname{font-weight:700;text-transform:uppercase;font-size:14px}
+.tcity{font-size:13px;color:#777;font-weight:700}
+.view{display:none}
+.view.active{display:block}
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:38px 0 8px}
+.pd-img img{width:100%;height:520px;object-fit:cover;border:3px solid #111;box-shadow:9px 9px 0 #FFC531}
+.pd-title{font-family:'Archivo',sans-serif;font-size:33px;font-weight:900;text-transform:uppercase;margin:6px 0 10px;line-height:1.1}
+.pd-price{font-family:'Archivo',sans-serif;font-size:28px;font-weight:900;margin:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pd-price .sale-badge{background:#FFC531;color:#111;border:2px solid #111}
+.pd-desc{color:#333;line-height:1.6;font-size:16px;font-weight:500}
+.pd-desc2{color:#555;line-height:1.6;margin-top:8px;font-size:15px}
+.pd-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:21px 0 9px;font-size:14px}
+.sizes{display:flex;gap:9px;flex-wrap:wrap}
+.size-pill{border:2.5px solid #111;background:#fff;padding:9px 16px;font-weight:700;font-size:14.5px;color:#111;box-shadow:3px 3px 0 #111}
+.size-pill.active{background:#FFC531}
+.admin-note{font-size:13px;color:#777;margin-top:9px;font-weight:500}
+.qty-row{display:inline-flex;align-items:center;gap:14px;border:2.5px solid #111;padding:5px 10px;background:#fff}
+.qty-row span{font-weight:700;min-width:20px;text-align:center}
+.qty-btn{width:32px;height:32px;border:0;background:#FFC531;color:#111;font-size:19px;font-weight:700}
+.qty-row.sm{padding:3px 7px}
+.qty-row.sm .qty-btn{width:26px;height:26px;font-size:16px}
+.pd-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.pd-meta{margin-top:16px;font-size:13.5px;color:#555;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.back-btn{background:#fff;border:2.5px solid #111;color:#111;font-weight:700;text-transform:uppercase;padding:9px 17px;margin-top:22px;box-shadow:3px 3px 0 #111}
+.reviews{padding:26px 0 10px;max-width:860px}
+.reviews h3{font-family:'Archivo',sans-serif;font-size:23px;font-weight:900;text-transform:uppercase;margin-bottom:14px}
+.review{background:#fff;border:2.5px solid #111;padding:16px 18px;margin-bottom:12px;box-shadow:5px 5px 0 #eee}
+.rev-head{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.review p{color:#333;line-height:1.55;font-size:15px}
+.rev-form{background:#FFF6DC;border:2.5px solid #111;padding:20px;margin-top:18px}
+.rev-form h4{font-family:'Archivo',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:12px}
+.field{margin-bottom:13px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.field input,.field textarea,.field select{width:100%;box-sizing:border-box;border:2.5px solid #111;padding:11px 13px;font-family:inherit;font-size:15px;background:#fff;color:#111;outline:0}
+.field input:focus,.field textarea:focus,.field select:focus{box-shadow:3px 3px 0 #FFC531}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.page-head{padding:36px 0 6px}
+.page-head h2{font-family:'Archivo',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase}
+.page-head p{color:#555;margin-top:7px;font-weight:500}
+.ck-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;padding:22px 0 10px;align-items:start}
+.ck-card{background:#fff;border:2.5px solid #111;box-shadow:7px 7px 0 #111;padding:24px}
+.ck-card h3{font-family:'Archivo',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:15px}
+.sum-line{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:2px dashed #DDD;font-size:15px;font-weight:500}
+.sum-line.total{border-bottom:0;font-weight:900;font-size:18px;font-family:'Archivo',sans-serif}
+.pay-note{background:#FFF6DC;border:2.5px solid #111;color:#5C4A00;padding:13px 15px;font-size:14.5px;font-weight:700;line-height:1.5;margin:14px 0}
+.ck-error{display:none;background:#FFE1DE;border:2.5px solid #C22F22;color:#8F1D12;padding:11px 14px;font-weight:700;font-size:14.5px;margin-bottom:13px}
+.place-btn{width:100%;font-size:18px;padding:16px}
+.track-box{max-width:640px;margin:20px auto 6px;background:#fff;border:2.5px solid #111;box-shadow:7px 7px 0 #FFC531;padding:24px}
+.track-form{display:flex;gap:10px;flex-wrap:wrap}
+.track-form input{flex:1;min-width:200px;border:2.5px solid #111;padding:12px 15px;font-family:inherit;font-size:15.5px;outline:0;font-weight:500}
+.demo-note{background:#FFF6DC;border:2px solid #111;padding:11px 14px;font-weight:700;font-size:14px;color:#5C4A00;margin-bottom:15px}
+.track-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:16px;margin-bottom:14px;font-weight:700}
+.track-head span{color:#555;font-size:14px}
+.timeline{margin:8px 0 4px}
+.timeline li{display:flex;gap:14px;position:relative;padding-bottom:20px}
+.timeline li .dot{width:16px;height:16px;background:#DDD;flex:none;margin-top:3px;z-index:1;border:2.5px solid #111}
+.timeline li:not(:last-child):before{content:"";position:absolute;left:8px;top:23px;bottom:0;width:2.5px;background:#DDD}
+.timeline li.done .dot{background:#FFC531}
+.timeline li.current .dot{background:#111}
+.timeline li p{color:#555;font-size:14px;margin-top:2px}
+.track-courier{font-size:14.5px;color:#555;margin-top:6px;font-weight:500}
+.done-box{max-width:640px;margin:36px auto 10px;background:#fff;border:3px solid #111;box-shadow:9px 9px 0 #FFC531;padding:34px 28px;text-align:center}
+.done-check{width:74px;height:74px;background:#E7F8EE;border:2.5px solid #111;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.done-check svg{fill:#178A4C}
+.done-box h2{font-family:'Archivo',sans-serif;font-size:27px;font-weight:900;text-transform:uppercase;margin-bottom:9px}
+.done-box p{color:#333;line-height:1.6;margin-bottom:8px}
+.done-id{font-size:19px}
+.done-id strong{background:#FFC531;padding:0 8px}
+.cart-drawer{position:fixed;top:0;right:0;height:100dvh;width:min(400px,94vw);background:#fff;z-index:80;border-left:3px solid #111;transform:translateX(106%);transition:transform .32s ease;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:3px solid #111}
+.drawer-head h3{font-family:'Archivo',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase}
+.close-x{background:#FFC531;border:2.5px solid #111;width:36px;height:36px;font-size:18px;color:#111;font-weight:700}
+.drawer-lines{flex:1;overflow-y:auto;padding:16px 20px}
+.cline{display:flex;gap:12px;background:#fff;border:2.5px solid #111;padding:11px;margin-bottom:12px;position:relative;box-shadow:4px 4px 0 #eee}
+.cline img{width:66px;height:66px;object-fit:cover;border:2px solid #111}
+.cline-title{font-weight:700;font-size:14.5px;line-height:1.3;padding-right:22px;text-transform:uppercase}
+.cline-size{font-size:13px;color:#555;font-weight:700;margin:2px 0}
+.cline-price{font-weight:900;font-size:14.5px;margin-bottom:6px;font-family:'Archivo',sans-serif}
+.line-remove{position:absolute;top:7px;right:9px;background:transparent;border:0;font-size:19px;color:#999;font-weight:700}
+.drawer-foot{border-top:3px solid #111;padding:17px 20px}
+.drawer-foot .sum-line{border-bottom:0;padding:4px 0}
+#overlay{position:fixed;inset:0;background:rgba(17,17,17,.5);z-index:70;display:none}
+#overlay.show{display:block}
+footer{background:#111;color:#CCC;margin-top:54px}
+.foot-grid{display:grid;grid-template-columns:1.3fr .8fr .8fr 1.2fr;gap:28px;padding:42px 0 26px}
+footer h4{color:#fff;font-family:'Archivo',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;margin-bottom:13px}
+footer li{margin-bottom:8px;font-size:14.5px}
+footer a{color:#CCC}
+footer a:hover{color:#FFC531}
+.foot-word{font-family:'Archivo',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:#fff}
+.foot-word span{background:#FFC531;color:#111;padding:0 6px}
+.foot-tag{color:#FFC531;font-weight:700;font-size:13px;margin:6px 0 11px;letter-spacing:1.6px;text-transform:uppercase}
+footer p{font-size:14.5px;line-height:1.6}
+.news-form{display:flex;gap:8px;margin-top:6px}
+.news-form input{flex:1;border:0;padding:11px 14px;font-family:inherit;font-size:14.5px;min-width:0}
+.news-form button{background:#FFC531;color:#111;border:0;padding:11px 17px;font-weight:700;text-transform:uppercase}
+#newsMsg{font-size:14px;margin-top:9px}
+#newsMsg .ok{color:#7CE3A8;font-weight:700}
+.foot-bottom{border-top:1px solid #333;padding:16px 0 20px;font-size:13.5px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;width:57px;height:57px;border-radius:50%;border:2.5px solid #111;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #111}
+.wa-float svg{fill:#fff}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);background:#111;color:#FFC531;font-weight:700;font-size:14.5px;padding:12px 22px;z-index:90;transition:transform .3s ease;max-width:92vw;text-align:center;border:2px solid #FFC531;text-transform:uppercase;letter-spacing:.4px}
+#toast.show{transform:translate(-50%,0)}
+.sticky-bar{display:none}
+@media(max-width:900px){.pd{grid-template-columns:1fr}.pd-img img{height:360px}.ck-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:40px}}
+@media(max-width:560px){.hero h1{font-size:31px}.hero-in{padding:38px 16px}.hero-block{padding:22px 20px}.head-in{gap:10px}.search-box{order:3;flex-basis:100%}.wordmark{font-size:20px}.form-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}.section{padding-top:34px}}
+
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>Free delivery on orders above Rs 3,000 · Cash on Delivery available</span><span>Rahim Yar Khan · WhatsApp <a href="https://wa.me/923458020864" target="_blank" rel="noopener">0345 8020864</a></span></div></div>
+<header class="site-head"><div class="wrap head-in">
+<div class="wordmark">Collection's by <span>Zoni</span><small>Little style, big smile</small></div>
+<div class="search-box"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input id="searchInput" type="search" placeholder="Search track suits, frocks, tees..." aria-label="Search products"></div>
+<nav class="main-nav">
+<button class="nav-btn" data-action="nav-home">Home</button>
+<button class="nav-btn" data-action="nav-shop">Shop</button>
+<button class="nav-btn" data-action="nav-track">Track Order</button>
+<button class="nav-btn" data-action="nav-contact">Contact</button>
+</nav>
+<button class="cart-btn" data-action="open-cart"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.13.12-.27.12-.42 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Cart <span class="badge" id="cartCount">0</span></button>
+</div></header>
+<main>
+<section id="view-home" class="view active">
+<header class="hero" style="background-image:url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1600&auto=format&fit=crop&q=70')"><div class="hero-shade"><div class="wrap hero-in">
+<div class="hero-block"><span class="hero-eyebrow">Kids Clothing · Rahim Yar Khan</span>
+<h1>Big looks for <span class="accent">little</span> legends</h1>
+<p class="hero-sub">Track suits, graphic tees, party frocks and winter gear — bold styles for kids aged 0 to 10, with Cash on Delivery and delivery all over Pakistan.</p>
+<div class="hero-ctas"><button class="btn primary big" data-action="nav-shop">Shop Now</button><button class="btn ghost big" data-action="nav-track">Track Order</button></div><div class="stats"><div class="stat"><b>500+</b> Happy Families</div><div class="stat">Cash on Delivery</div><div class="stat"><b>7-Day</b> Easy Exchange</div><div class="stat">Delivery All Over Pakistan</div></div></div>
+</div></div></header>
+<section class="section"><div class="wrap">
+<div class="sec-head"><h2>Shop by Age</h2><p>Find the perfect fit for every age — tap an age to filter the collection.</p></div>
+<div class="age-row" id="ageTiles"></div>
+</div></section>
+<section class="section" id="shop"><div class="wrap">
+<div class="sec-head"><h2>Shop the Collection</h2><p>Demo products with sample prices — the full store will carry the complete Zoni range.</p></div>
+<div class="chips" id="catChips"></div>
+<div class="res-count" id="resCount"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="testi"><h2>Loved by Families</h2><div class="testi-grid" id="testimonials"></div></div>
+</div></section>
+</section>
+<section id="view-product" class="view"><div class="wrap">
+<button class="back-btn" data-action="back-home">&larr; Back to Shop</button>
+<div id="productDetail" class="pd"></div>
+<div class="reviews"><h3>Customer Reviews</h3>
+<div id="reviewsList"></div>
+<form id="reviewForm" class="rev-form"><h4>Write a Review</h4>
+<div class="form-grid">
+<div class="field"><label for="rv-name">Your Name</label><input id="rv-name" name="rname" required placeholder="e.g. Fatima S."></div>
+<div class="field"><label for="rv-rating">Rating</label><select id="rv-rating" name="rrating"><option value="5">5 — Excellent</option><option value="4">4 — Good</option><option value="3">3 — Average</option><option value="2">2 — Poor</option><option value="1">1 — Bad</option></select></div>
+</div>
+<div class="field"><label for="rv-text">Your Review</label><textarea id="rv-text" name="rtext" rows="3" required placeholder="How was the quality, fit and delivery?"></textarea></div>
+<button class="btn primary" type="submit">Submit Review</button></form>
+</div>
+</div></section>
+<section id="view-checkout" class="view"><div class="wrap">
+<div class="page-head"><h2>Checkout</h2><p>Fill in your delivery details and place your order — no online payment needed.</p></div>
+<div class="ck-grid">
+<div class="ck-card"><h3>Delivery Details</h3>
+<form id="checkoutForm">
+<div id="ckError" class="ck-error"></div>
+<div class="form-grid">
+<div class="field"><label for="ck-name">Full Name *</label><input id="ck-name" name="cname" required placeholder="Your full name"></div>
+<div class="field"><label for="ck-phone">Phone Number *</label><input id="ck-phone" name="cphone" required placeholder="03XX XXXXXXX"></div>
+<div class="field"><label for="ck-whats">WhatsApp Number</label><input id="ck-whats" name="cwhats" placeholder="Same as phone if blank"></div>
+<div class="field"><label for="ck-city">City</label><input id="ck-city" name="ccity" placeholder="e.g. Rahim Yar Khan"></div>
+</div>
+<div class="field"><label for="ck-address">Full Address *</label><textarea id="ck-address" name="caddress" rows="2" required placeholder="House, street, area, landmark"></textarea></div>
+<div class="field"><label for="ck-email">Email (optional, for order confirmation)</label><input id="ck-email" name="cemail" type="email" placeholder="you@example.com"></div>
+<div class="pay-note">No online payment — Cash on Delivery or bank transfer after our team confirms your order on WhatsApp.</div>
+<button class="btn primary place-btn" type="submit">Place Order</button>
+</form></div>
+<div class="ck-card"><h3>Order Summary</h3><div id="ckSummary"></div></div>
+</div>
+<button class="back-btn" data-action="back-home">Continue Shopping</button>
+</div></section>
+<section id="view-track" class="view"><div class="wrap">
+<div class="page-head"><h2>Track Your Order</h2><p>Enter your order number from the confirmation screen to see its live status with TCS.</p></div>
+<div class="track-box">
+<form id="trackForm" class="track-form"><input id="trackInput" placeholder="Enter order number, e.g. ZB-1234" aria-label="Order number"><button class="btn primary" type="submit">Track Order</button></form>
+<div id="trackResult" style="margin-top:20px"></div>
+</div>
+<div style="text-align:center"><button class="back-btn" data-action="back-home">Back to Shop</button></div>
+</div></section>
+<section id="view-done" class="view"><div class="wrap"><div id="doneBox" class="done-box"></div></div></section>
+</main>
+<footer id="contact"><div class="wrap">
+<div class="foot-grid">
+<div><div class="foot-word">Collection's by <span>Zoni</span></div><div class="foot-tag">Little style, big smile</div>
+<p>Children's clothing for ages 0 to 10 — designed with love in Rahim Yar Khan and delivered all over Pakistan.</p>
+<p style="margin-top:10px">WhatsApp: <a href="https://wa.me/923458020864" target="_blank" rel="noopener">0345 8020864</a></p></div>
+<div><h4>Quick Links</h4><ul>
+<li><a href="#" data-action="nav-home">Home</a></li>
+<li><a href="#shop" data-action="nav-shop">Shop</a></li>
+<li><a href="#" data-action="nav-track">Track Order</a></li>
+<li><a href="#" data-action="open-cart">Your Cart</a></li>
+</ul></div>
+<div><h4>Categories</h4><ul id="footCats"></ul></div>
+<div><h4>Stay in the Loop</h4>
+<p>Join our newsletter for new arrivals and family offers.</p>
+<form id="newsletterForm" class="news-form"><input type="email" required placeholder="Your email address" aria-label="Email address"><button type="submit">Join</button></form>
+<div id="newsMsg"></div>
+<p style="margin-top:14px">Main Bazaar Road, Rahim Yar Khan, Punjab, Pakistan</p></div>
+</div>
+<div class="foot-bottom"><span>© 2026 Collection's by Zoni. All rights reserved.</span><span>Demo store — sample products and prices.</span></div>
+</div></footer>
+<div id="overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart">
+<div class="drawer-head"><h3>Your Cart</h3><button class="close-x" data-action="close-cart" aria-label="Close cart">×</button></div>
+<div class="drawer-lines" id="cartLines"></div>
+<div class="drawer-foot">
+<div class="sum-line"><span>Subtotal</span><span id="cartSubtotal">Rs. 0</span></div>
+<div class="sum-line"><span>Delivery</span><span id="cartShip">Rs. 0</span></div>
+<div class="sum-line total"><span>Total</span><span id="cartTotal">Rs. 0</span></div>
+<button class="btn primary place-btn" id="ckBtn" data-action="checkout" style="margin-top:12px">Proceed to Checkout</button>
+</div></aside>
+
+<a class="wa-float" href="https://wa.me/923458020864" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="29" height="29" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
+<div id="toast" role="status"></div>
+<script>
+"use strict";
+/* Collection's by Zoni — demo store engine.
+   Structure mirrors the audited Giggles & Gadgets base: a SETTINGS object
+   (like /api/initial-state settings), a product catalog with the same field
+   shape (title, regularPrice, salePrice, rating, reviewCount, category,
+   ageGroup, featuredImage, shortDesc, fullDesc), a COD order flow producing
+   ZB-#### order numbers (base uses GG-####), and TCS order tracking. */
+const DESIGN = 3;
+const SETTINGS = {
+  siteName: "Collection's by Zoni",
+  tagline: "Little style, big smile",
+  phoneDisplay: "0345 8020864",
+  whatsapp: "https://wa.me/923458020864",
+  address: "Main Bazaar Road, Rahim Yar Khan, Punjab, Pakistan",
+  city: "Rahim Yar Khan, Punjab, Pakistan",
+  freeShippingThreshold: 3000,
+  flatShippingFee: 200,
+  currency: "Rs. "
+};
+const IMG = "https://images.unsplash.com/";
+const Q = "?w=800&auto=format&fit=crop&q=70";
+const CATEGORIES = ["All", "Track Suits", "Shirts & Tees", "Frocks & Dresses", "Baby Sets", "Winter Wear", "Eastern Wear"];
+const CATBAND = {"Track Suits":"#38BDF8","Shirts & Tees":"#34D399","Frocks & Dresses":"#F472B6","Baby Sets":"#FBBF24","Winter Wear":"#818CF8","Eastern Wear":"#2DD4BF"};
+const AGES = ["0-2","2-4","4-6","6-8","8-10"];
+const PRODUCTS = [
+ {id:1,title:"Dino Track Suit",slug:"dino-track-suit",regularPrice:3200,salePrice:2499,rating:4.8,reviewCount:24,category:"Track Suits",ages:["2-4","4-6"],sizes:["2-3Y","3-4Y","4-5Y","5-6Y"],featuredImage:IMG+"photo-1503919005314-30d93d07d823"+Q,shortDesc:"Soft fleece track suit with a fun dino print, elastic waist and ribbed cuffs.",fullDesc:["A two-piece track suit in breathable fleece that keeps little explorers warm without overheating.","The dino print stays bright wash after wash, and the elastic waist makes dressing easy.","Perfect for school runs, park days and weekend outings."],reviews:[{name:"Fatima S.",city:"Rahim Yar Khan",rating:5,text:"My son wears it all day and it still looks new after many washes.",date:"2 days ago"},{name:"Ayesha K.",city:"Multan",rating:5,text:"Soft material and the size fit exactly as described. Very happy.",date:"1 week ago"},{name:"Hira M.",city:"Bahawalpur",rating:4,text:"Colours are bright and stitching is neat. Delivery was quick.",date:"2 weeks ago"}]},
+ {id:2,title:"Racing Car Track Suit",slug:"racing-car-track-suit",regularPrice:2699,salePrice:2699,rating:4.7,reviewCount:18,category:"Track Suits",ages:["4-6","6-8"],sizes:["4-5Y","5-6Y","6-7Y","7-8Y"],featuredImage:IMG+"photo-1596870230751-ebdfce98ec42"+Q,shortDesc:"Sporty two-piece with racing stripes, zip jacket and jogger pants.",fullDesc:["A sporty track suit with a smooth zip jacket and comfy jogger pants.","Made for active kids — the fabric stretches with every run, jump and climb.","Racing stripes and a bold chest print make it a playground favourite."],reviews:[{name:"Maryam T.",city:"Rahim Yar Khan",rating:5,text:"Bought it for my 6 year old, he refuses to take it off.",date:"3 days ago"},{name:"Sana R.",city:"Lahore",rating:4,text:"Good quality zip and fabric. Size chart was accurate.",date:"1 week ago"}]},
+ {id:3,title:"Cotton Graphic Tee",slug:"cotton-graphic-tee",regularPrice:1299,salePrice:999,rating:4.6,reviewCount:31,category:"Shirts & Tees",ages:["2-4","4-6","6-8"],sizes:["2-3Y","3-4Y","4-5Y","5-6Y","6-7Y"],featuredImage:IMG+"photo-1471286174890-9c112ffca5b4"+Q,shortDesc:"100% combed cotton tee with a cheerful front print. Gentle on skin.",fullDesc:["An everyday essential in soft combed cotton that breathes in summer heat.","The front graphic is printed with skin-safe, crack-free ink.","Pairs with jeans, shorts or track pants for an easy outfit."],reviews:[{name:"Zainab A.",city:"Rahim Yar Khan",rating:5,text:"Cotton quality is excellent for the price. Ordered two more.",date:"1 day ago"},{name:"Mahnoor F.",city:"Karachi",rating:4,text:"Print looks even better in person. True to size.",date:"5 days ago"},{name:"Amna J.",city:"Multan",rating:5,text:"No colour fade after washing. Recommended.",date:"2 weeks ago"}]},
+ {id:4,title:"Denim Shirt",slug:"denim-shirt",regularPrice:1499,salePrice:1499,rating:4.7,reviewCount:15,category:"Shirts & Tees",ages:["4-6","6-8","8-10"],sizes:["4-5Y","5-6Y","6-7Y","7-8Y","8-9Y","9-10Y"],featuredImage:IMG+"photo-1519457431-44ccd64a579b"+Q,shortDesc:"Lightweight denim shirt with snap buttons and a smart casual look.",fullDesc:["A soft, lightweight denim shirt that dresses up or down with ease.","Snap buttons are easy for little fingers, so kids can dress themselves.","Pre-washed for softness with reinforced stitching at the seams."],reviews:[{name:"Rabia N.",city:"Rahim Yar Khan",rating:5,text:"Looks so smart on my daughter. Fabric is soft, not stiff.",date:"4 days ago"},{name:"Iqra S.",city:"Islamabad",rating:4,text:"Good stitching and buttons. Slightly long sleeves, size down if between sizes.",date:"1 week ago"}]},
+ {id:5,title:"Polo Shirt Pack of 2",slug:"polo-shirt-pack-of-2",regularPrice:1799,salePrice:1799,rating:4.8,reviewCount:22,category:"Shirts & Tees",ages:["2-4","4-6"],sizes:["2-3Y","3-4Y","4-5Y","5-6Y"],featuredImage:IMG+"photo-1586363104862-3a5e2ab60d99"+Q,shortDesc:"Value pack of two pique polos in fresh colours. School and outing ready.",fullDesc:["Two classic pique polo shirts in one value pack — mix, match and rotate.","Breathable knit with a tidy collar that keeps its shape.","A smart pick for school events, family photos and Friday outings."],reviews:[{name:"Shazia B.",city:"Bahawalpur",rating:5,text:"Both colours are lovely and the collars stay neat after washing.",date:"2 days ago"},{name:"Nadia H.",city:"Rahim Yar Khan",rating:5,text:"Great value for two shirts. Will order the next size up too.",date:"1 week ago"}]},
+ {id:6,title:"Floral Summer Frock",slug:"floral-summer-frock",regularPrice:2400,salePrice:1899,rating:4.9,reviewCount:27,category:"Frocks & Dresses",ages:["2-4","4-6"],sizes:["2-3Y","3-4Y","4-5Y","5-6Y"],featuredImage:IMG+"photo-1518831959646-742c3a14ebf7"+Q,shortDesc:"Twirly floral frock in airy lawn with a soft cotton lining.",fullDesc:["A twirl-approved floral frock in airy summer lawn with a gentle cotton lining.","The back zip is covered so it never scratches delicate skin.","Made for mehndis, birthdays and sunny day photos."],reviews:[{name:"Fatima S.",city:"Rahim Yar Khan",rating:5,text:"My daughter twirled in it all evening. Lining makes it very comfortable.",date:"1 day ago"},{name:"Kiran D.",city:"Multan",rating:5,text:"Print is prettier than the pictures. Perfect fit for age 4.",date:"6 days ago"},{name:"Mehwish A.",city:"Lahore",rating:4,text:"Lovely frock, delivery took 3 days to Lahore.",date:"2 weeks ago"}]},
+ {id:7,title:"Party Net Frock",slug:"party-net-frock",regularPrice:2899,salePrice:2899,rating:4.8,reviewCount:19,category:"Frocks & Dresses",ages:["4-6","6-8"],sizes:["4-5Y","5-6Y","6-7Y","7-8Y"],featuredImage:IMG+"photo-1503454537195-1dcabb73ffb9"+Q,shortDesc:"Layered net party frock with satin bow — made for celebrations.",fullDesc:["A celebration-ready frock with soft layered net over a smooth satin lining.","Finished with a satin bow and a comfortable, non-scratch inner layer.","For birthdays, weddings and every little star moment in between."],reviews:[{name:"Ayesha K.",city:"Rahim Yar Khan",rating:5,text:"Wore it to a family wedding and got so many compliments.",date:"3 days ago"},{name:"Hira M.",city:"Karachi",rating:4,text:"Net is soft, not itchy like other party frocks we tried.",date:"1 week ago"}]},
+ {id:8,title:"Baby Romper Set 3 pcs",slug:"baby-romper-set-3-pcs",regularPrice:1599,salePrice:1599,rating:4.9,reviewCount:34,category:"Baby Sets",ages:["0-2"],sizes:["0-6M","6-12M","12-18M","1-2Y"],featuredImage:IMG+"photo-1622290319146-7b63df48a635"+Q,shortDesc:"Three soft rompers with easy snap buttons for quick changes.",fullDesc:["A set of three everyday rompers in breathable, baby-soft cotton.","Nickel-free snap buttons make nappy changes quick and fuss-free.","Gentle flat seams protect newborn skin from irritation."],reviews:[{name:"Maryam T.",city:"Rahim Yar Khan",rating:5,text:"Snaps are strong and fabric is so soft on my baby's skin.",date:"2 days ago"},{name:"Sana R.",city:"Bahawalpur",rating:5,text:"Washed many times, still soft and bright. Best baby set we found.",date:"1 week ago"},{name:"Amna J.",city:"Multan",rating:4,text:"Good value for three rompers. Colours match the photos.",date:"3 weeks ago"}]},
+ {id:9,title:"Newborn Gift Set 5 pcs",slug:"newborn-gift-set-5-pcs",regularPrice:2600,salePrice:2199,rating:4.9,reviewCount:29,category:"Baby Sets",ages:["0-2"],sizes:["0-3M","3-6M","6-9M","9-12M"],featuredImage:IMG+"photo-1622290291468-a28f7a7dc6a8"+Q,shortDesc:"Five-piece welcome set: romper, tee, pants, cap and mittens in a gift box.",fullDesc:["A complete five-piece welcome set presented in a keepsake gift box.","Includes a romper, tee, pants, cap and scratch mittens in matching prints.","Made from hypoallergenic cotton — a thoughtful gift for new parents."],reviews:[{name:"Zainab A.",city:"Rahim Yar Khan",rating:5,text:"Gifted it at a baby shower, the box presentation is beautiful.",date:"5 days ago"},{name:"Nadia H.",city:"Lahore",rating:5,text:"Everything is soft and well finished. Highly recommended gift.",date:"2 weeks ago"}]},
+ {id:10,title:"Hooded Winter Jacket",slug:"hooded-winter-jacket",regularPrice:3299,salePrice:3299,rating:4.8,reviewCount:21,category:"Winter Wear",ages:["4-6","6-8","8-10"],sizes:["4-5Y","5-6Y","6-7Y","7-8Y","8-9Y","9-10Y"],featuredImage:IMG+"photo-1503919545889-aef636e10ad4"+Q,shortDesc:"Warm padded jacket with a cosy hood and wind-proof outer layer.",fullDesc:["A warm padded jacket with a cosy hood for cold Rahim Yar Khan winters.","Wind-proof outer layer with soft fleece lining inside.","Two roomy pockets for little treasures and cold hands."],reviews:[{name:"Iqra S.",city:"Rahim Yar Khan",rating:5,text:"Kept my son warm on the coldest mornings. Hood is a great size.",date:"3 days ago"},{name:"Shazia B.",city:"Islamabad",rating:4,text:"Warm and light, not bulky. Zip quality is good.",date:"1 week ago"}]},
+ {id:11,title:"Fleece Sweatshirt",slug:"fleece-sweatshirt",regularPrice:1699,salePrice:1699,rating:4.6,reviewCount:16,category:"Winter Wear",ages:["2-4","4-6","6-8"],sizes:["2-3Y","3-4Y","4-5Y","5-6Y","6-7Y"],featuredImage:IMG+"photo-1522771930-78848d9293e8"+Q,shortDesc:"Brushed fleece sweatshirt — warm, light and easy to layer.",fullDesc:["A brushed-fleece sweatshirt that is warm without the weight.","Ribbed cuffs and hem keep the warmth in during play.","Layers easily over tees and under jackets on colder days."],reviews:[{name:"Rabia N.",city:"Multan",rating:4,text:"Soft inside and washes well. My go-to winter layer now.",date:"4 days ago"},{name:"Kiran D.",city:"Rahim Yar Khan",rating:5,text:"Perfect weight for our winters. True to size.",date:"2 weeks ago"}]},
+ {id:12,title:"Kids Kurta Shalwar",slug:"kids-kurta-shalwar",regularPrice:2299,salePrice:2299,rating:4.8,reviewCount:23,category:"Eastern Wear",ages:["4-6","6-8","8-10"],sizes:["4-5Y","5-6Y","6-7Y","7-8Y","8-9Y","9-10Y"],featuredImage:IMG+"photo-1567113463300-102a7eb3cb26"+Q,shortDesc:"Classic cotton kurta shalwar with neat stitching for Eid and Fridays.",fullDesc:["A classic two-piece kurta shalwar in breathable premium cotton.","Neat stitching, a tidy band collar and a comfortable straight fit.","Made for Eid mornings, Friday prayers and family gatherings."],reviews:[{name:"Mehwish A.",city:"Rahim Yar Khan",rating:5,text:"Stitching is very neat and the cotton is excellent quality.",date:"2 days ago"},{name:"Mahnoor F.",city:"Bahawalpur",rating:5,text:"My son looked so smart on Eid. Fit was perfect for his age.",date:"1 week ago"},{name:"Fatima S.",city:"Lahore",rating:4,text:"Good fabric and finishing. Will buy another colour.",date:"3 weeks ago"}]}
+];
+const TESTIMONIALS = [
+ {name:"Fatima S.",city:"Rahim Yar Khan",rating:5,text:"Finally a kids store in our city with real variety. The track suit quality is better than what we used to order from Karachi."},
+ {name:"Ayesha K.",city:"Multan",rating:5,text:"Ordered a frock for my daughter's birthday. Size was perfect, delivery was on time and cash on delivery made it easy."},
+ {name:"Maryam T.",city:"Bahawalpur",rating:5,text:"The newborn gift set was beautifully packed and so soft. My sister loved it. This is our family store now."}
+];
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function money(n){return SETTINGS.currency + Number(n).toLocaleString("en-US");}
+function storeGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
+function storeSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function starRow(r,size){let h="";for(let i=1;i<=5;i++){h+='<svg class="star'+(i<=Math.round(r)?" on":"")+'" viewBox="0 0 24 24" width="'+(size||14)+'" height="'+(size||14)+'"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';}return '<span class="stars">'+h+"</span>";}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2200);}
+/* ---------- state ---------- */
+const state = {age:"all",cat:"All",q:"",cart:storeGet("zoni_d"+DESIGN+"_cart")||[],orders:storeGet("zoni_d"+DESIGN+"_orders")||[],current:null,size:null,qty:1};
+function saveCart(){storeSet("zoni_d"+DESIGN+"_cart",state.cart);}
+function saveOrders(){storeSet("zoni_d"+DESIGN+"_orders",state.orders);}
+function byId(id){return PRODUCTS.find(p=>p.id===Number(id));}
+function cartCount(){return state.cart.reduce((a,l)=>a+l.qty,0);}
+function cartSubtotal(){return state.cart.reduce((a,l)=>a+byId(l.id).salePrice*l.qty,0);}
+function shipFee(sub){return state.cart.length===0?0:(sub>=SETTINGS.freeShippingThreshold?0:SETTINGS.flatShippingFee);}
+/* ---------- rendering ---------- */
+function filtered(){return PRODUCTS.filter(p=>(state.age==="all"||p.ages.includes(state.age))&&(state.cat==="All"||p.category===state.cat)&&(!state.q||(p.title+" "+p.category).toLowerCase().includes(state.q.toLowerCase())));}
+function cardHTML(p){
+ const off=p.regularPrice>p.salePrice?Math.round((1-p.salePrice/p.regularPrice)*100):0;
+ const band=DESIGN===4?'<div class="card-band" style="background:'+CATBAND[p.category]+'"></div>':"";
+ const pill=DESIGN===1?'<span class="price-pill">'+money(p.salePrice)+"</span>":'<span class="card-price">'+money(p.salePrice)+"</span>";
+ const was=p.regularPrice>p.salePrice?'<span class="was">'+money(p.regularPrice)+"</span>":"";
+ const sale=off?'<span class="sale-badge">-'+off+"%</span>":"";
+ return '<article class="card" data-action="open" data-id="'+p.id+'">'+band+
+ '<div class="card-img"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'" loading="lazy">'+sale+"</div>"+
+ '<div class="card-body"><div class="card-cat">'+esc(p.category)+"</div>"+
+ '<h3 class="card-title">'+esc(p.title)+"</h3>"+
+ '<div class="card-rating">'+starRow(p.rating)+'<span class="rc">'+p.rating+" ("+p.reviewCount+")</span></div>"+
+ '<div class="card-foot">'+pill+was+"</div>"+
+ '<button class="btn add-btn" data-action="add" data-id="'+p.id+'">Add to Cart</button></div></article>';
+}
+function renderGrid(){
+ const list=filtered();
+ $("#grid").innerHTML=list.length?list.map(cardHTML).join(""):'<div class="empty">No products match your filters. Try another age or category.</div>';
+ $("#resCount").textContent="Showing "+list.length+" of "+PRODUCTS.length+" products";
+ $$(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===state.cat));
+ $$(".age-tile").forEach(t=>t.classList.toggle("active",t.dataset.age===state.age));
+}
+function renderTestimonials(){
+ $("#testimonials").innerHTML=TESTIMONIALS.map(t=>'<div class="tcard">'+starRow(t.rating,16)+'<p>"'+esc(t.text)+'"</p><div class="tname">'+esc(t.name)+'</div><div class="tcity">'+esc(t.city)+"</div></div>").join("");
+}
+function renderProduct(p){
+ state.current=p; state.qty=1; state.size=p.sizes[Math.min(1,p.sizes.length-1)];
+ const off=p.regularPrice>p.salePrice?Math.round((1-p.salePrice/p.regularPrice)*100):0;
+ $("#productDetail").innerHTML=
+ '<div class="pd-img"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'"></div>'+
+ '<div class="pd-info"><div class="card-cat">'+esc(p.category)+'</div>'+
+ '<h2 class="pd-title">'+esc(p.title)+'</h2>'+
+ '<div class="card-rating">'+starRow(p.rating,16)+'<span class="rc">'+p.rating+" · "+p.reviewCount+" reviews</span></div>"+
+ '<div class="pd-price">'+money(p.salePrice)+(p.regularPrice>p.salePrice?' <span class="was">'+money(p.regularPrice)+'</span> <span class="sale-badge">Save '+off+"%</span>":"")+"</div>"+
+ '<p class="pd-desc">'+esc(p.shortDesc)+"</p>"+
+ p.fullDesc.map(d=>'<p class="pd-desc2">'+esc(d)+"</p>").join("")+
+ '<div class="pd-label">Select Size</div><div class="sizes">'+p.sizes.map(s=>'<button class="size-pill'+(s===state.size?" active":"")+'" data-action="size" data-size="'+esc(s)+'">'+esc(s)+"</button>").join("")+"</div>"+
+ '<p class="admin-note">Sizes are managed from the admin panel in the full store — sizes can be added or edited anytime.</p>'+
+ '<div class="pd-label">Quantity</div><div class="qty-row"><button class="qty-btn" data-action="qty-dec">−</button><span id="pdQty">1</span><button class="qty-btn" data-action="qty-inc">+</button></div>'+
+ '<div class="pd-actions"><button class="btn primary big" data-action="add-current">Add to Cart</button><button class="btn ghost big" data-action="open-cart">View Cart</button></div>'+
+ '<div class="pd-meta">Cash on Delivery available · Delivery Rs 200 (FREE above Rs 3,000) · 7-Day Easy Exchange</div></div>';
+ renderReviews(p);
+ go("product");
+}
+function renderReviews(p){
+ const box=$("#reviewsList"); if(!box) return;
+ box.innerHTML=p.reviews.map(r=>'<div class="review"><div class="rev-head">'+starRow(r.rating)+'<strong>'+esc(r.name)+'</strong><span class="tcity">'+esc(r.city)+" · "+esc(r.date)+'</span></div><p>'+esc(r.text)+"</p></div>").join("");
+}
+function addToCart(id,size,qty){
+ const key=id+"|"+size;
+ const line=state.cart.find(l=>l.key===key);
+ if(line) line.qty+=qty; else state.cart.push({key:key,id:Number(id),size:size,qty:qty});
+ saveCart(); renderCart();
+ toast("Added to cart: "+byId(id).title+" ("+size+")");
+}
+function renderCart(){
+ const n=cartCount(), sub=cartSubtotal(), fee=shipFee(sub), tot=sub+fee;
+ $("#cartCount").textContent=n;
+ const sb=$("#stickyTotal"); if(sb){$("#stickyCount").textContent=n+" item"+(n===1?"":"s"); sb.textContent=money(sub);}
+ $("#cartLines").innerHTML=state.cart.length?state.cart.map(l=>{const p=byId(l.id);return '<div class="cline"><img src="'+p.featuredImage+'" alt="'+esc(p.title)+'"><div class="cline-info"><div class="cline-title">'+esc(p.title)+'</div><div class="cline-size">Size: '+esc(l.size)+'</div><div class="cline-price">'+money(p.salePrice)+'</div><div class="qty-row sm"><button class="qty-btn" data-action="line-dec" data-key="'+esc(l.key)+'">−</button><span>'+l.qty+'</span><button class="qty-btn" data-action="line-inc" data-key="'+esc(l.key)+'">+</button></div></div><button class="line-remove" data-action="line-remove" data-key="'+esc(l.key)+'" aria-label="Remove item">×</button></div>';}).join(""):'<div class="empty">Your cart is empty. Add something your little one will love.</div>';
+ $("#cartSubtotal").textContent=money(sub);
+ $("#cartShip").textContent=fee===0?(state.cart.length?"FREE":"Rs. 0"):money(fee);
+ $("#cartTotal").textContent=money(tot);
+ const ck=$("#ckBtn"); if(ck) ck.disabled=state.cart.length===0;
+}
+function renderCkSummary(){
+ const sub=cartSubtotal(), fee=shipFee(sub);
+ $("#ckSummary").innerHTML=state.cart.map(l=>{const p=byId(l.id);return '<div class="sum-line"><span>'+esc(p.title)+" · "+esc(l.size)+" × "+l.qty+'</span><span>'+money(p.salePrice*l.qty)+"</span></div>";}).join("")+
+ '<div class="sum-line"><span>Subtotal</span><span>'+money(sub)+'</span></div><div class="sum-line"><span>Delivery</span><span>'+(fee===0?"FREE":money(fee))+'</span></div><div class="sum-line total"><span>Total</span><span>'+money(sub+fee)+"</span></div>";
+}
+function go(view){
+ $$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));
+ window.scrollTo({top:0});
+ if(view==="checkout") renderCkSummary();
+}
+function openCart(){$("#cartDrawer").classList.add("open");$("#overlay").classList.add("show");}
+function closeCart(){$("#cartDrawer").classList.remove("open");$("#overlay").classList.remove("show");}
+function timelineHTML(order,isDemo){
+ const steps=[["Order Placed","Your order has been received."],["Packed","Your items are packed and ready."],["Shipped via TCS","Handed to TCS courier for delivery."],["Out for Delivery","The rider is on the way to your address."]];
+ const doneUpto=isDemo?3:2;
+ return (isDemo?'<p class="demo-note">Demo timeline — place an order in this demo to track it live here.</p>':"")+
+ '<div class="track-head"><strong>'+esc(order?order.orderNumber:"ZB-DEMO")+"</strong>"+(order?'<span>'+esc(order.customerName)+" · "+esc(order.city)+" · "+money(order.total)+"</span>":"<span>Courier: TCS</span>")+"</div>"+
+ '<ol class="timeline">'+steps.map((s,i)=>'<li class="'+(i<doneUpto?"done":(i===doneUpto?"current":""))+'"><span class="dot"></span><div><strong>'+s[0]+'</strong><p>'+s[1]+"</p></div></li>").join("")+"</ol>"+
+ '<p class="track-courier">Courier: <strong>TCS</strong> · Need help? WhatsApp us at <a href="'+SETTINGS.whatsapp+'" target="_blank" rel="noopener">'+SETTINGS.phoneDisplay+"</a></p>";
+}
+/* ---------- events (single delegated listeners, guarded) ---------- */
+function bind(){
+ if(document.body.dataset.zoniBound) return; document.body.dataset.zoniBound="1";
+ document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-action]"); 
+  if(e.target.id==="overlay"){closeCart();return;}
+  if(!el) return;
+  const a=el.dataset.action;
+  if(el.tagName==="A") e.preventDefault();
+  if(a==="add"){e.stopPropagation();const p=byId(el.dataset.id);addToCart(p.id,p.sizes[Math.min(1,p.sizes.length-1)],1);}
+  else if(a==="open"){const p=byId(el.dataset.id); if(p) renderProduct(p);}
+  else if(a==="size"){state.size=el.dataset.size;$$(".size-pill").forEach(s=>s.classList.toggle("active",s.dataset.size===state.size));}
+  else if(a==="qty-inc"){state.qty++;$("#pdQty").textContent=state.qty;}
+  else if(a==="qty-dec"){if(state.qty>1)state.qty--;$("#pdQty").textContent=state.qty;}
+  else if(a==="add-current"){addToCart(state.current.id,state.size,state.qty);openCart();}
+  else if(a==="open-cart"){openCart();}
+  else if(a==="close-cart"){closeCart();}
+  else if(a==="checkout"){if(state.cart.length){closeCart();go("checkout");}}
+  else if(a==="age"){const v=el.dataset.age;state.age=(state.age===v)?"all":v;renderGrid();document.getElementById("shop").scrollIntoView();}
+  else if(a==="age-all"){state.age="all";renderGrid();}
+  else if(a==="cat"){state.cat=el.dataset.cat;renderGrid();}
+  else if(a==="line-inc"){const l=state.cart.find(x=>x.key===el.dataset.key);if(l){l.qty++;saveCart();renderCart();}}
+  else if(a==="line-dec"){const l=state.cart.find(x=>x.key===el.dataset.key);if(l){l.qty--;if(l.qty<1)state.cart=state.cart.filter(x=>x.key!==l.key);saveCart();renderCart();}}
+  else if(a==="line-remove"){state.cart=state.cart.filter(x=>x.key!==el.dataset.key);saveCart();renderCart();}
+  else if(a==="nav-home"){go("home");}
+  else if(a==="nav-shop"){go("home");setTimeout(()=>document.getElementById("shop").scrollIntoView(),30);}
+  else if(a==="nav-track"){go("track");}
+  else if(a==="nav-contact"){document.getElementById("contact").scrollIntoView();}
+  else if(a==="back-home"){go("home");}
+  else if(a==="track-go"){const id=($("#trackInput").value||"").trim();doTrack(id);}
+  else if(a==="track-placed"){go("track");}
+  else if(a==="cat-link"){state.cat=el.dataset.cat;state.age="all";go("home");renderGrid();setTimeout(()=>document.getElementById("shop").scrollIntoView(),30);}
+ });
+ const si=$("#searchInput");
+ si.addEventListener("input",()=>{state.q=si.value;if(!$("#view-home").classList.contains("active"))go("home");renderGrid();});
+ document.addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=e.target;
+  if(f.id==="newsletterForm"){const em=f.querySelector("input[type=email]").value.trim();if(!em)return;$("#newsMsg").innerHTML='<span class="ok">Thank you for subscribing. Welcome to the Zoni family.</span>';f.reset();}
+  else if(f.id==="reviewForm"){submitReview(f);}
+  else if(f.id==="checkoutForm"){placeOrder(f);}
+  else if(f.id==="trackForm"){doTrack(($("#trackInput").value||"").trim());}
+ });
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
+}
+function submitReview(f){
+ if(!state.current) return;
+ const name=f.querySelector("[name=rname]").value.trim();
+ const rating=Number(f.querySelector("[name=rrating]").value);
+ const text=f.querySelector("[name=rtext]").value.trim();
+ if(!name||!text){toast("Please add your name and a short review.");return;}
+ state.current.reviews.unshift({name:name,city:"Rahim Yar Khan",rating:rating,text:text,date:"Just now"});
+ state.current.reviewCount++;
+ renderReviews(state.current);
+ const rc=$("#productDetail .rc"); if(rc) rc.textContent=state.current.rating+" · "+state.current.reviewCount+" reviews";
+ f.reset(); toast("Thank you! Your review is live.");
+}
+function placeOrder(f){
+ const g=n=>f.querySelector("[name="+n+"]").value.trim();
+ const name=g("cname"),phone=g("cphone"),wa=g("cwhats")||phone,city=g("ccity"),addr=g("caddress"),email=g("cemail");
+ const err=$("#ckError");
+ if(!name||!phone||!addr){err.textContent="Please fill your full name, phone number and complete address so we can deliver your order.";err.style.display="block";return;}
+ err.style.display="none";
+ if(!state.cart.length){toast("Your cart is empty.");return;}
+ const sub=cartSubtotal(),fee=shipFee(sub);
+ const order={orderNumber:"ZB-"+(1000+Math.floor(Math.random()*9000)),customerName:name,customerPhone:phone,whatsapp:wa,address:addr,city:city||"Rahim Yar Khan",email:email,paymentMethod:"Cash on Delivery",items:state.cart.map(l=>{const p=byId(l.id);return {product:{id:p.id,title:p.title,salePrice:p.salePrice,featuredImage:p.featuredImage},quantity:l.qty,selectedVariant:l.size};}),subtotal:sub,shippingFee:fee,total:sub+fee,status:"processing",createdAt:new Date().toISOString()};
+ state.orders.unshift(order); saveOrders();
+ state.cart=[]; saveCart(); renderCart();
+ $("#doneBox").innerHTML='<div class="done-check"><svg viewBox="0 0 24 24" width="38" height="38"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>'+
+ '<h2>Thank you, '+esc(name.split(" ")[0])+"!</h2>"+
+ '<p class="done-id">Your order number is <strong>'+order.orderNumber+"</strong></p>"+
+ '<p>Items: '+order.items.reduce((a,i)=>a+i.quantity,0)+" · Total: <strong>"+money(order.total)+"</strong> · Payment: Cash on Delivery</p>"+
+ (email?'<p>A confirmation email has been sent to <strong>'+esc(email)+"</strong>.</p>":"")+
+ '<p>Our team will confirm your order on WhatsApp ('+esc(wa)+") shortly, then pack it and hand it to TCS.</p>"+
+ '<div class="pd-actions"><button class="btn primary big" data-action="track-placed">Track Your Order</button><button class="btn ghost big" data-action="back-home">Continue Shopping</button></div>';
+ const ti=$("#trackInput"); if(ti) ti.value=order.orderNumber;
+ f.reset();
+ go("done");
+}
+function doTrack(id){
+ const box=$("#trackResult");
+ if(!id){box.innerHTML='<p class="demo-note">Please enter your order number, for example the one from your confirmation (ZB-1234).</p>';return;}
+ const order=state.orders.find(o=>o.orderNumber.toUpperCase()===id.toUpperCase());
+ if(order){box.innerHTML=timelineHTML(order,false);}
+ else{box.innerHTML=timelineHTML(null,true);}
+}
+/* ---------- init ---------- */
+function renderCats(){
+ $("#catChips").innerHTML=CATEGORIES.map(c=>'<button class="chip'+(c===state.cat?" active":"")+'" data-action="cat" data-cat="'+esc(c)+'">'+esc(c)+"</button>").join("");
+ $("#ageTiles").innerHTML=AGES.map(a=>'<button class="age-tile" data-action="age" data-age="'+a+'"><span class="age-num">'+a+'</span><span class="age-lab">Years</span></button>').join("");
+ const fl=$("#footCats"); if(fl) fl.innerHTML=CATEGORIES.slice(1).map(c=>'<li><a href="#shop" data-action="cat-link" data-cat="'+esc(c)+'">'+esc(c)+"</a></li>").join("");
+}
+document.addEventListener("DOMContentLoaded",()=>{renderCats();renderGrid();renderTestimonials();renderCart();bind();});
+
+</script>
+</body>
+</html>
